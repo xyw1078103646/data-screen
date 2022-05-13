@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-10 23:18:55
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-13 15:26:02
+ * @LastEditTime: 2022-05-13 17:38:13
  * @Description:
  */
 const path = require("path");
@@ -11,6 +11,7 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 module.exports = {
+  publicPath: "/sc",
   devServer: {
     proxy: {
       "/v1": {

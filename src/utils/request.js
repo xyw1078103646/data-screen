@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-11 10:30:48
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-13 11:44:06
+ * @LastEditTime: 2022-05-13 17:48:51
  * @Description:
  */
 import axios from "axios";
@@ -10,7 +10,7 @@ import { Message } from "element-ui";
 
 axios.defaults.headers["Content-type"] = "application/json;charset=utf-8";
 const Service = axios.create({
-  baseURL: "/v1",
+  baseURL: "https://project.develop.lanchengiot.cn/project_device/v1",
   timeout: 150000,
 });
 //请求拦截器
