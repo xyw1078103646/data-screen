@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-14 09:53:50
+ * @LastEditTime: 2022-05-14 13:00:55
  * @Description:
  */
 import { getDsData } from "@/api/homeApi";
@@ -34,6 +34,7 @@ export default {
             manager: null, //人员管理
             position: null, //重点部位（巡逻点）巡查管理
             runStatus: null, //本月运维状态
+            records: null
         };
     },
     mounted() {
@@ -47,6 +48,7 @@ export default {
             this.manager = res.data.manager;
             this.position = res.data.position;
             this.runStatus = res.data.runStatus;
+            this.records = res.data.alarm.records
         },
     },
 };

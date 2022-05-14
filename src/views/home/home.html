@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:47
  * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-14 09:51:35
+ * @LastEditTime: 2022-05-14 13:01:02
  * @Description: 
 -->
 <div class="bg">
@@ -35,19 +35,19 @@
                     <!-- 本月运维状态 -->
                     <div class="runStatus sc-mr-2">
                         <Panel title="本月运维状态">
-                            <run-status :list="runStatus"></run-status>
+                            <run-status v-if="runStatus" :list="runStatus"></run-status>
                         </Panel>
                     </div>
                     <!-- 实时报警 -->
                     <div class="records sc-mr-2">
                         <Panel title="实时报警">
-                            <Records :list="alarm.records"></Records>
+                            <Records v-if="records" :list="records"></Records>
                         </Panel>
                     </div>
                     <!-- 人员管理 -->
                     <div class="manager">
                         <Panel title="人员管理">
-                            <Manager :list="manager"></Manager>
+                            <Manager v-if="manager" :list="manager"></Manager>
                         </Panel>
                     </div>
                 </div>
@@ -57,13 +57,13 @@
                 <!-- 巡查管理 -->
                 <div class="position sc-mb-2">
                     <Panel title="巡查管理">
-                        <Position :list="position"></Position>
+                        <Position v-if="position" :list="position"></Position>
                     </Panel>
                 </div>
                 <!-- 运营统计 -->
                 <div class="alarm">
                     <Panel title="运营统计">
-                        <Alarm :list="alarm"></Alarm>
+                        <Alarm v-if="alarm" :list="alarm"></Alarm>
                     </Panel>
                 </div>
             </div>
