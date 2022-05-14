@@ -1,12 +1,16 @@
 <!--
  * @Author: xyw
  * @Date: 2022-05-11 11:16:35
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-13 16:56:44
+ * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
+ * @LastEditTime: 2022-05-13 23:31:23
  * @Description: 
 -->
 <template>
   <div class="panel-container" :style="styleObj">
+    <div class="title sc-flex sc-jc-between sc-ai-center">
+      <span>{{title}}</span>
+      <svg-icon icon-class="arrow"></svg-icon>
+    </div>
     <slot />
     <div class="bottom"></div>
   </div>
@@ -20,6 +24,10 @@ export default {
       type: Number,
       default: 0,
     },
+    title:{
+      type:String,
+      default:''
+    }
   },
   computed: {
     styleObj() {
@@ -38,31 +46,42 @@ export default {
 <style lang="less" scoped>
 .panel-container {
   width: 100%;
-  height: 3.375rem;
-  background: rgba(0, 114, 247, 0.07);
-  box-shadow: inset 0px 1px 14px 0px rgba(2, 132, 213, 0.4);
-  border: 1px solid rgba(4, 164, 180, 0.17);
+  height: 100%;
+  background: rgba(41,85,252,.1);
+  border: 1px solid #1A3F72;
   position: relative;
-  padding: 0 0.125rem 0.125rem;
+  // padding: 0 10px;
+  .title {
+    height: 40px;
+    padding: 0 20px 0 28px;
+    font-size: 20px;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #FFFFFF;
+    background: linear-gradient(90deg, #151E5B 0%, #142765 50%, #15205F 100%);
+    .svg-icon {
+      cursor: pointer;
+    }
+  }
   &::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 0.1375rem;
-    height: 0.1375rem;
-    border-top: 0.025rem solid #04a4b4;
-    border-left: 0.025rem solid #04a4b4;
+    width:23px;
+      height: 23px;
+    border-top: 3px solid #3680E4;
+    border-left: 3px solid #3680E4;
   }
   &::after {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
-    width: 0.1375rem;
-    height: 0.1375rem;
-    border-top: 0.025rem solid #04a4b4;
-    border-right: 0.025rem solid #04a4b4;
+    width:23px;
+      height: 23px;
+    border-top: 3px solid #3680E4;
+    border-right:3px solid #3680E4;
   }
   .bottom {
     position: absolute;
@@ -74,20 +93,20 @@ export default {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0.1375rem;
-      height: 0.1375rem;
-      border-left: 0.025rem solid #04a4b4;
-      border-bottom: 0.025rem solid #04a4b4;
+      width:23px;
+      height: 23px;
+      border-left: 3px solid #3680E4;
+      border-bottom: 3px solid #3680E4;
     }
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 0.1375rem;
-      height: 0.1375rem;
-      border-right: 0.025rem solid #04a4b4;
-      border-bottom: 0.025rem solid #04a4b4;
+      width:23px;
+      height: 23px;
+      border-right: 3px solid #3680E4;
+      border-bottom: 3px solid #3680E4;
     }
   }
 }

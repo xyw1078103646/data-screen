@@ -2,12 +2,16 @@
  * @Description: 全局样式处理
  * @Author: lz
  * @Date: 2021-07-21 10:32:54
- * @LastEditTime: 2022-05-11 11:08:41
- * @LastEditors: xyw
+ * @LastEditTime: 2022-05-14 10:35:08
+ * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
  */
 @import "./_variable.less";
 @import "./common.less";
 @common-size: 1px;
+
+.w-50 {
+  width: 50%;
+}
 
 .w-100 {
   width: 100%;
@@ -34,7 +38,7 @@
 }
 
 .sc-search-input {
-  width: 220px!important;
+  width: 220px !important;
 }
 
 .sc-common-warpper {
@@ -121,116 +125,102 @@
 
 //颜色
 each(@colors, {
-    .sc-text-@{key} {
-      color: @value  !important;
-    }
-
-    .sc-bg-@{key} {
-      background-color: @value!important;
-    }
+  .sc-text-@{key} {
+    color: @value  !important;
   }
 
-);
+  .sc-bg-@{key} {
+    background-color: @value  !important;
+  }
+});
 
 //字体 fs-xxs 8px fs-sm 12px fs-md 13px
 each(@font-sizes, {
-    .sc-fs-@{key} {
-      font-size: @value * @common-size  !important;
-    }
+  .sc-fs-@{key} {
+    font-size: @value * @common-size  !important;
   }
-
-) //text对齐方式
+}) //text对齐方式
 
 each(@text-types, {
-    .sc-text-@{key} {
-      text-align: @value;
-    }
+  .sc-text-@{key} {
+    text-align: @value;
   }
-
-) //主轴方向 布局
+}) //主轴方向 布局
 
 each(@flex-jc, {
-    .sc-jc-@{key} {
-      display: flex;
-      justify-content: @value;
-    }
+  .sc-jc-@{key} {
+    display: flex;
+    justify-content: @value;
   }
-
-) //侧轴方向 布局
+}) //侧轴方向 布局
 
 each(@flex-ai , {
-    .sc-ai-@{key} {
-      display: flex;
-      align-items: @value;
-    }
+  .sc-ai-@{key} {
+    display: flex;
+    align-items: @value;
   }
-
-) //1px边框 + 颜色
+}) //1px边框 + 颜色
 
 each(@colors , {
-    .sc-border-@{key} {
-      border:1px solid @value;
-    }
+  .sc-border-@{key} {
+    border:1px solid @value;
   }
-
-) //margin padding
+}) //margin padding
 
 each(@spacing-sizes, {
-    .sc-m-@{key} {
-      margin: @value*@common-size  !important;
-    }
-
-    .sc-mx-@{key} {
-      margin: 0 @value*@common-size  !important;
-    }
-
-    .sc-my-@{key} {
-      margin: @value*@common-size 0 !important;
-    }
-
-    .sc-mr-@{key} {
-      margin-right: @value*@common-size  !important;
-    }
-
-    .sc-ml-@{key} {
-      margin-left: @value*@common-size  !important;
-    }
-
-    .sc-mt-@{key} {
-      margin-top: @value*@common-size  !important;
-    }
-
-    .sc-mb-@{key} {
-      margin-bottom: @value*@common-size  !important;
-    }
-
-    .sc-p-@{key} {
-      padding: @value*@common-size  !important;
-    }
-
-    .sc-px-@{key} {
-      padding: 0 @value*@common-size  !important;
-    }
-
-    .sc-py-@{key} {
-      padding: @value*@common-size 0 !important;
-    }
-
-    .sc-pr-@{key} {
-      padding-right: @value*@common-size  !important;
-    }
-
-    .sc-pl-@{key} {
-      padding-left: @value*@common-size  !important;
-    }
-
-    .sc-pt-@{key} {
-      padding-top: @value*@common-size  !important;
-    }
-
-    .sc-pb-@{key} {
-      padding-bottom: @value*@common-size  !important;
-    }
+  .sc-m-@{key} {
+    margin: @value*@common-size  !important;
   }
 
-)
+  .sc-mx-@{key} {
+    margin: 0 @value*@common-size  !important;
+  }
+
+  .sc-my-@{key} {
+    margin: @value*@common-size 0 !important;
+  }
+
+  .sc-mr-@{key} {
+    margin-right: @value*@common-size  !important;
+  }
+
+  .sc-ml-@{key} {
+    margin-left: @value*@common-size  !important;
+  }
+
+  .sc-mt-@{key} {
+    margin-top: @value*@common-size  !important;
+  }
+
+  .sc-mb-@{key} {
+    margin-bottom: @value*@common-size  !important;
+  }
+
+  .sc-p-@{key} {
+    padding: @value*@common-size  !important;
+  }
+
+  .sc-px-@{key} {
+    padding: 0 @value*@common-size  !important;
+  }
+
+  .sc-py-@{key} {
+    padding: @value*@common-size 0 !important;
+  }
+
+  .sc-pr-@{key} {
+    padding-right: @value*@common-size  !important;
+  }
+
+  .sc-pl-@{key} {
+    padding-left: @value*@common-size  !important;
+  }
+
+  .sc-pt-@{key} {
+    padding-top: @value*@common-size  !important;
+  }
+
+  .sc-pb-@{key} {
+    padding-bottom: @value*@common-size  !important;
+  }
+})
