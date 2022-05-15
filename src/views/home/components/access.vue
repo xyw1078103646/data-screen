@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-14 11:22:02
+ * @LastEditTime: 2022-05-14 13:17:05
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -12,7 +12,7 @@
       <svg-icon icon-class="access"></svg-icon>
       <div class="sc-ml-1 sc-fs-xxl">设备接入数<span class="num">{{list.total}}</span></div>     
     </div>
-    <el-carousel height="180px">
+    <el-carousel height="0.94rem">
       <el-carousel-item v-for="(item,index) in carousel" :key="'access' + index">
         <div class="itemBox sc-flex sc-flex-wrap sc-px-1">
           <div class="item w-50 sc-flex sc-ai-center" v-for="child in item" :key="child.kindName">
