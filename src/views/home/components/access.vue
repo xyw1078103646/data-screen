@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-14 13:17:05
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-16 10:50:44
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -10,17 +10,33 @@
   <div class="box">
     <div class="head sc-flex sc-jc-center sc-ai-center sc-text-white sc-mb-1">
       <svg-icon icon-class="access"></svg-icon>
-      <div class="sc-ml-1 sc-fs-xxl">设备接入数<span class="num">{{list.total}}</span></div>     
+      <div class="sc-ml-1 sc-fs-xxl">
+        设备接入数<span class="num">{{ list.total }}</span>
+      </div>
     </div>
     <el-carousel height="0.94rem">
-      <el-carousel-item v-for="(item,index) in carousel" :key="'access' + index">
+      <el-carousel-item
+        v-for="(item, index) in carousel"
+        :key="'access' + index"
+      >
         <div class="itemBox sc-flex sc-flex-wrap sc-px-1">
-          <div class="item w-50 sc-flex sc-ai-center" v-for="child in item" :key="child.kindName">
-            <svg-icon :icon-class="child.kindName"></svg-icon>  
+          <div
+            class="item w-50 sc-flex sc-ai-center"
+            v-for="child in item"
+            :key="child.kindName"
+          >
+            <!-- <svg-icon :icon-class="child.kindName"></svg-icon>   -->
+            <svg-icon :icon-class="'access' + child.kind"></svg-icon>
             <div class="sc-ml-1">
-              <div class="sc-fs-md sc-text-white">{{child.kindName}}{{child.count}}</div>
+              <div class="sc-fs-md sc-text-white">
+                {{ child.kindName }}{{ child.count }}
+              </div>
               <div class="proBox sc-flex sc-ai-center">
-                <div class="pro" v-for="pro in child.count" :key="'pro' + pro"></div>
+                <div
+                  class="pro"
+                  v-for="pro in child.count"
+                  :key="'pro' + pro"
+                ></div>
               </div>
             </div>
           </div>
@@ -32,29 +48,29 @@
 
 <script>
 export default {
-  props:{
-    list:{
-      type:Object,
-      default(){
-        return {}
-      }
-    }
+  props: {
+    list: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
-  computed:{
-    carousel(){
-      let arr = []
-      arr[0] = this.list.kindCount.slice(0,6)
-      arr[1] = this.list.kindCount.slice(6)
-      return arr
-    }
-  }
-}
+  computed: {
+    carousel() {
+      let arr = [];
+      arr[0] = this.list.kindCount.slice(0, 6);
+      arr[1] = this.list.kindCount.slice(6);
+      return arr;
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
 .box {
   .head {
-    height:65px;
+    height: 65px;
     .svg-icon {
       width: 58px;
       height: 54px;
@@ -70,9 +86,9 @@ export default {
     .el-carousel__button {
       width: 10px;
       height: 10px;
-      background: #4CD1FF;
+      background: #4cd1ff;
       opacity: 0.3;
-      border-radius: 50%;     
+      border-radius: 50%;
     }
     &.is-active {
       .el-carousel__button {
@@ -80,30 +96,29 @@ export default {
       }
     }
   }
-  
+
   /deep/.el-carousel__item {
-    
     .itemBox {
       .item {
         margin-bottom: 15px;
         .svg-icon {
-          width:32px;
+          width: 32px;
           height: 32px;
         }
         .proBox {
           width: 160px;
           height: 16px;
-          margin-top:5px;
-          border: 1px solid #162C85;
+          margin-top: 5px;
+          border: 1px solid #162c85;
           border-radius: 2px;
           overflow: hidden;
           .pro {
             width: 4px;
             min-width: 4px;
             height: 10px;
-            background: #23E9CE;
+            background: #23e9ce;
             border-radius: 1px;
-            margin-left:4px;
+            margin-left: 4px;
           }
         }
       }
