@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-10 23:12:01
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 11:07:22
+ * @LastEditTime: 2022-05-16 14:43:25
  * @Description:
  */
 import Vue from "vue";
@@ -14,12 +14,14 @@ export default new Router({
   mode: "history",
   base: "/sc",
   routes: [
+    //首页大屏
     {
       path: "/",
       name: "home",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/views/index.vue"),
     },
+    //设备列表
     {
       path: "/list",
       name: "list",

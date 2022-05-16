@@ -2,8 +2,8 @@
  * @Author: xyw
  * @Date: 2022-05-10 23:12:01
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 10:59:16
- * @Description: 二级页面 列表
+ * @LastEditTime: 2022-05-16 15:25:39
+ * @Description: 二级页面 设备列表
 -->
 <template src="./list/list.html"> </template>
 
