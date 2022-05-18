@@ -1,5 +1,5 @@
 .box {
-    padding:0 25px;
+    padding:0 80px;
     .head {
         height:60px;
         .sc-text-white {
@@ -34,6 +34,26 @@
             }
             &.rt-arrow {
                 right:0;
+            }
+        }
+        .tagBox {
+            white-space: nowrap;
+            overflow: hidden;
+            .tag {
+                min-width:114px;
+                text-align: center;
+                height: 48px;
+                background: #0F5094;
+                border-radius: 4px;
+                padding: 15px 16px;
+                font-size: 18px;
+                color:#fff;
+                margin-right:14px;
+                cursor: pointer;
+                &.isActive,&:hover {
+                    background: linear-gradient(0deg, #1981F4 0%, #4CD1FF 100%);
+                    font-weight: bold;
+                }
             }
         }
     }

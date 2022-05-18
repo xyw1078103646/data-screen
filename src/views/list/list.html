@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 17:42:50
+ * @LastEditTime: 2022-05-18 17:44:02
  * @Description: 
 -->
 <Panel>
@@ -11,7 +11,7 @@
       <div class="t sc-text-white">用户传输装置</div>
       <div class="sc-text-white sc-flex sc-ai-center sc-cursor">
         <span>关闭</span>
-        <svg-icon icon-class="close"></svg-icon>
+        <i class="el-icon-close"></i>
       </div>
     </div>
     <div class="tab">
@@ -23,6 +23,44 @@
       <div class="rt-arrow arrow">
         <i class="el-icon-arrow-right sc-text-white"></i>
       </div>
+      <!-- 中间 -->
+      <div class="tagBox">
+        <div
+          class="tag sc-in-block"
+          :class="{isActive:item.code == active}"
+          v-for="item in tabList"
+          :key="item.code"
+          @click="changeActive(item.code)"
+        >
+          {{item.label}}
+        </div>
+      </div>
+    </div>
+    <div class="tableBox sc-mt-2">
+      <el-table :data="tableData" class="w-100" v-loading="" loading>
+        <el-table-column
+          v-if="isShow('name')"
+          prop="name"
+          label="设备名称"
+        ></el-table-column>
+        <el-table-column
+          v-if="isShow('installationAddr')"
+          prop="installationAddr"
+          label="安装地址"
+        ></el-table-column>
+        <el-table-column
+          v-if="isShow('networkAddr')"
+          prop="networkAddr"
+          label="IMEI"
+        >
+        </el-table-column>
+        <el-table-column
+          v-if="isShow('runStatus')"
+          prop="runStatus"
+          label="联网状态"
+        >
+        </el-table-column>
+      </el-table>
     </div>
   </div>
 </Panel>
