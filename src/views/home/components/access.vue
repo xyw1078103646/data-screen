@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 10:50:44
+ * @LastEditTime: 2022-05-18 10:43:10
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -14,7 +14,7 @@
         设备接入数<span class="num">{{ list.total }}</span>
       </div>
     </div>
-    <el-carousel height="0.94rem">
+    <el-carousel height="0.94rem" v-if="carousel.length > 1">
       <el-carousel-item
         v-for="(item, index) in carousel"
         :key="'access' + index"
@@ -43,6 +43,30 @@
         </div>
       </el-carousel-item>
     </el-carousel>
+    <div v-else style="height:0.94rem">
+      <div class="itemBox sc-flex sc-flex-wrap sc-px-1">
+        <div
+          class="item w-50 sc-flex sc-ai-center"
+          v-for="child in carousel[0]"
+          :key="child.kindName"
+        >
+          <!-- <svg-icon :icon-class="child.kindName"></svg-icon>   -->
+          <svg-icon :icon-class="'access' + child.kind"></svg-icon>
+          <div class="sc-ml-1">
+            <div class="sc-fs-md sc-text-white">
+              {{ child.kindName }}{{ child.count }}
+            </div>
+            <div class="proBox sc-flex sc-ai-center">
+              <div
+                class="pro"
+                v-for="pro in child.count"
+                :key="'pro' + pro"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -58,9 +82,12 @@ export default {
   },
   computed: {
     carousel() {
+      let listCopy = JSON.parse(JSON.stringify(this.list.kindCount));
       let arr = [];
-      arr[0] = this.list.kindCount.slice(0, 6);
-      arr[1] = this.list.kindCount.slice(6);
+      let i = 0;
+      while (listCopy.length > 0) {
+        arr[i] = listCopy.splice(0, 6);
+      }
       return arr;
     },
   },
@@ -120,6 +147,32 @@ export default {
             border-radius: 1px;
             margin-left: 4px;
           }
+        }
+      }
+    }
+  }
+
+  .itemBox {
+    .item {
+      margin-bottom: 15px;
+      .svg-icon {
+        width: 32px;
+        height: 32px;
+      }
+      .proBox {
+        width: 160px;
+        height: 16px;
+        margin-top: 5px;
+        border: 1px solid #162c85;
+        border-radius: 2px;
+        overflow: hidden;
+        .pro {
+          width: 4px;
+          min-width: 4px;
+          height: 10px;
+          background: #23e9ce;
+          border-radius: 1px;
+          margin-left: 4px;
         }
       }
     }
