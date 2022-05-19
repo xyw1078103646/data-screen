@@ -2,17 +2,19 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-18 17:43:34
+ * @LastEditTime: 2022-05-19 16:15:50
  * @Description:
  */
 
 import Panel from "./components/panel.vue";
+import TablePanel from "./components/tablePanel.vue";
 import { getEquipment } from "@/api/listApi.js";
 
 export default {
   name: "list",
   components: {
     Panel,
+    TablePanel,
   },
   data() {
     return {
@@ -75,12 +77,22 @@ export default {
       pageNum: 1,
       pageSize: 10,
       tableData: [],
+      total: 0,
     };
+  },
+  computed: {
+    title() {
+      return this.tabList.find((n) => n.code == this.active).label;
+    },
   },
   mounted() {
     this.getList();
   },
   methods: {
+    handleChange(pageNum) {
+      this.pageNum = pageNum;
+      this.getList();
+    },
     async getList() {
       this.loading = true;
       const res = await getEquipment({
@@ -90,13 +102,76 @@ export default {
       });
       this.loading = false;
       this.tableData = res.data.list;
+      this.total = res.data.total;
     },
     //判断该行是否展示
     isShow(prop) {
       let enumObj = {
-        2: ["name", "installationAddr", "networkAddr", "runStatus"],
+        2: ["name", "installationAddr", "networkAddr", "runStatus"], //智能烟感
+        10: ["name", "installationAddr", "networkAddr", "runStatus"], //智能温感
+        3: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "action1",
+          "action2",
+          "action3",
+        ], //智慧用电
+        5: [
+          "fireRoomName",
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "action4",
+        ], //监控摄像头
+        99: ["name", "installationAddr", "networkAddr"], //水浸设备
+        14: ["name", "installationAddr", "networkAddr", "runStatus"], //可燃气体探测器
+        4: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "valueMap",
+          "blockShot",
+          "valveStatus",
+        ], //室外消火栓
+        9: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "valueMap",
+          "valueMap1",
+        ], //室内消火栓
+        11: [
+          "name",
+          "installationAddr1",
+          "networkAddr",
+          "runStatus",
+          "action5",
+        ], //智能充电桩
+        6: ["name", "fireRoomName", "networkAddr1", "runStatus"], //用户传输装置
+        8: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "cameraName",
+          "thermalImageName",
+          "runStatus",
+          "action6",
+        ], //火焰识别摄像头
+        1: [
+          "fireRoomName",
+          "transmissionName",
+          "name1",
+          "networkAddr",
+          "runStatus",
+        ], //消防主机
+        12: ["name1", "networkAddr2", "runStatus"], //物联网主机
       };
-      if (enumObj[this.active].includes(prop)) {
+      if (enumObj[this.active] && enumObj[this.active].includes(prop)) {
         return true;
       } else {
         return false;
@@ -104,6 +179,7 @@ export default {
     },
     changeActive(code) {
       this.active = code;
+      this.getList();
     },
   },
 };

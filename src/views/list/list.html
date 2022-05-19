@@ -2,14 +2,17 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-18 17:55:33
+ * @LastEditTime: 2022-05-19 16:16:35
  * @Description: 
 -->
 <Panel>
   <div class="box">
     <div class="head sc-flex sc-ai-center sc-jc-between sc-mb-2">
-      <div class="t sc-text-white">用户传输装置</div>
-      <div class="sc-text-white sc-flex sc-ai-center sc-cursor">
+      <div class="t sc-text-white">{{title}}</div>
+      <div
+        class="sc-text-white sc-flex sc-ai-center sc-cursor"
+        @click="$router.push('/')"
+      >
         <span>关闭</span>
         <i class="el-icon-close"></i>
       </div>
@@ -37,30 +40,180 @@
       </div>
     </div>
     <div class="tableBox sc-mt-2">
-      <el-table :data="tableData" class="w-100" v-loading="" loading>
-        <el-table-column
-          v-if="isShow('name')"
-          prop="name"
-          label="设备名称"
-        ></el-table-column>
-        <el-table-column
-          v-if="isShow('installationAddr')"
-          prop="installationAddr"
-          label="安装地址"
-        ></el-table-column>
-        <el-table-column
-          v-if="isShow('networkAddr')"
-          prop="networkAddr"
-          label="IMEI"
+      <table-panel>
+        <el-table
+          height="3.1rem"
+          :data="tableData"
+          class="w-100 "
+          v-loading="loading"
         >
-        </el-table-column>
-        <el-table-column
-          v-if="isShow('runStatus')"
-          prop="runStatus"
-          label="联网状态"
+          <el-table-column type="index" align="center" width="100" label="序号">
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('fireRoomName')"
+            prop="fireRoomName"
+            label="所属消控室"
+          ></el-table-column>
+          <el-table-column
+            v-if="isShow('transmissionName')"
+            prop="transmissionName"
+            label="所属用传"
+          ></el-table-column>
+          <el-table-column
+            v-if="isShow('name')"
+            prop="name"
+            label="设备名称"
+          ></el-table-column>
+          <el-table-column
+            v-if="isShow('name1')"
+            prop="name"
+            label="主机名称"
+          ></el-table-column>
+          <el-table-column
+            v-if="isShow('installationAddr')"
+            prop="installationAddr"
+            label="安装地址"
+          >
+            <template slot-scope="{row}">
+              <span
+                >{{row.buildName + row.floorName + row.areaName +
+                row.ownerName}}</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('installationAddr1')"
+            prop="installationAddr"
+            label="站点"
+          >
+            <template slot-scope="{row}">
+              <span
+                >{{row.buildName + row.floorName + row.areaName +
+                row.ownerName}}</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('networkAddr')"
+            prop="networkAddr"
+            label="IMEI"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('networkAddr1')"
+            prop="networkAddr"
+            label="用传编号"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('networkAddr2')"
+            prop="networkAddr"
+            label="主机ID"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('cameraName')"
+            prop="cameraName"
+            label="实时镜像名称"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('thermalImageName')"
+            prop="thermalImageName"
+            label="热成像名称"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('runStatus')"
+            prop="runStatus"
+            label="联网状态"
+          >
+            <template slot-scope="scope">
+              <span v-if="scope.row.runStatus == 1">在线</span>
+              <span v-if="scope.row.runStatus == 2">离线</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('valueMap')"
+            prop="valueMap"
+            label="水压/MP"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('valueMap1')"
+            prop="valueMap"
+            label="水位/M"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('blockShot')"
+            prop="blockShot"
+            label="阀门"
+          >
+          </el-table-column>
+          <el-table-column
+            v-if="isShow('valveStatus')"
+            prop="valveStatus"
+            label="盖帽"
+          >
+          </el-table-column>
+          <!-- 以下为操作 -->
+          <el-table-column v-if="isShow('action1')" label="用电趋势">
+            <template slot-scope="scope">
+              <span class="sc-cursor" @click="action1(scope.row)"
+                >查看详情</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column v-if="isShow('action2')" label="用电功率">
+            <template slot-scope="scope">
+              <span class="sc-cursor" @click="action2(scope.row)"
+                >查看详情</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column v-if="isShow('action3')" label="用电能耗">
+            <template slot-scope="scope">
+              <span class="sc-cursor" @click="action3(scope.row)"
+                >查看详情</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column v-if="isShow('action4')" label="操作">
+            <template slot-scope="scope">
+              <span class="sc-cursor" @click="action4(scope.row)"
+                >查看摄像头</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column v-if="isShow('action5')" label="操作">
+            <template slot-scope="scope">
+              <span class="sc-cursor" @click="action5(scope.row)"
+                >查看详情</span
+              >
+            </template>
+          </el-table-column>
+          <el-table-column v-if="isShow('action6')" label="操作">
+            <template slot-scope="scope">
+              <span class="sc-cursor sc-mr-1" @click="action6(scope.row)"
+                >在线视频预览</span
+              >
+              <span class="sc-cursor" @click="action6(scope.row)"
+                >热成像预览</span
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+      </table-panel>
+      <div class="page sc-mt-2 sc-text-rt sc-text-white">
+        <el-pagination
+          background
+          :total="total"
+          :currentPage.sync="pageNum"
+          @current-change="handleChange"
         >
-        </el-table-column>
-      </el-table>
+        </el-pagination>
+      </div>
     </div>
   </div>
 </Panel>
