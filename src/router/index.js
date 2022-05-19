@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-10 23:12:01
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 14:43:25
+ * @LastEditTime: 2022-05-19 17:58:05
  * @Description:
  */
 import Vue from "vue";
@@ -27,6 +27,13 @@ export default new Router({
       name: "list",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/views/list.vue"),
+    },
+    //运营统计
+    {
+      path: "/operation",
+      name: "operation",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/views/operation.vue"),
     },
   ],
 });
