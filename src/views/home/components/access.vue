@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:18:15
+ * @LastEditors: lz
+ * @LastEditTime: 2022-05-23 15:41:55
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -11,7 +11,14 @@
     <div class="head sc-flex sc-jc-center sc-ai-center sc-text-white sc-mb-1">
       <svg-icon icon-class="access"></svg-icon>
       <div class="sc-ml-1 sc-fs-xxl" @click="$router.push('/list')">
-        设备接入数<span class="num sc-cursor">{{ list.total }}</span>
+        设备接入数
+        <a-count-to
+          class="num sc-cursor"
+          :startVal="0"
+          :endVal="list.total"
+          :duration="3000"
+        ></a-count-to>
+        <!-- <span class="num sc-cursor">{{ list.total }}</span> -->
       </div>
     </div>
     <el-carousel height="0.94rem" v-if="carousel.length > 1">
@@ -30,7 +37,8 @@
             <svg-icon :icon-class="'access' + child.kind"></svg-icon>
             <div class="sc-ml-1">
               <div class="sc-fs-md sc-text-white">
-                {{ child.kindName }}{{ child.count }}
+                <span class="sc-mr-1">{{ child.kindName }}</span>
+                {{ child.count }}
               </div>
               <div class="proBox sc-flex sc-ai-center">
                 <div
@@ -56,7 +64,8 @@
           <svg-icon :icon-class="'access' + child.kind"></svg-icon>
           <div class="sc-ml-1">
             <div class="sc-fs-md sc-text-white">
-              {{ child.kindName }}{{ child.count }}
+              <span class="sc-mr-1">{{ child.kindName }}</span>
+              {{ child.count }}
             </div>
             <div class="proBox sc-flex sc-ai-center">
               <div
@@ -79,8 +88,8 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   computed: {
     carousel() {
@@ -91,8 +100,8 @@ export default {
         arr[i] = listCopy.splice(0, 6);
       }
       return arr;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -101,8 +110,9 @@ export default {
   .head {
     height: 65px;
     .svg-icon {
-      width: 58px;
-      height: 54px;
+      // width: 58px;
+      // height: 54px;
+      font-size: 54px;
     }
     .num {
       font-size: 28px;
@@ -131,8 +141,9 @@ export default {
       .item {
         margin-bottom: 15px;
         .svg-icon {
-          width: 32px;
-          height: 32px;
+          // width: 32px;
+          // height: 32px;
+          font-size: 32px;
         }
         .proBox {
           width: 160px;
@@ -158,8 +169,9 @@ export default {
     .item {
       margin-bottom: 15px;
       .svg-icon {
-        width: 32px;
-        height: 32px;
+        // width: 32px;
+        // height: 32px;
+        font-size: 32px;
       }
       .proBox {
         width: 160px;
