@@ -14,6 +14,25 @@
             margin-left:6px;
         }
     }
+    .tabBox {
+        .tab {
+            width: 144px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            background: #0F5094;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 24px;
+            &:last-child {
+                margin-right: 0;
+            }
+            &.isActive,&:hover {
+                background: linear-gradient(0deg, #1981F4 0%, #4CD1FF 100%);
+                font-weight: bold;
+            }
+        }
+    }
     .sc-cursor {
         &:hover {
             color:#4CD1FF;

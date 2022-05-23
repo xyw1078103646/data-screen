@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:57:27
+ * @LastEditTime: 2022-05-23 11:18:15
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -11,7 +11,7 @@
     <div class="head sc-flex sc-jc-center sc-ai-center sc-text-white sc-mb-1">
       <svg-icon icon-class="access"></svg-icon>
       <div class="sc-ml-1 sc-fs-xxl" @click="$router.push('/list')">
-        设备接入数<span class="num">{{ list.total }}</span>
+        设备接入数<span class="num sc-cursor">{{ list.total }}</span>
       </div>
     </div>
     <el-carousel height="0.94rem" v-if="carousel.length > 1">

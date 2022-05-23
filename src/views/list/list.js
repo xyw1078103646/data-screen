@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:41:08
+ * @LastEditTime: 2022-05-23 11:17:44
  * @Description:
  */
 
@@ -216,7 +216,14 @@ export default {
       this.getList();
     },
     // 智慧用电/空开 查看详情  type 1用电趋势 2用电功率 3用电能耗 4智能充电桩
-    async goDetail(row, type) {},
+    async goDetail(row, type) {
+      this.$router.push({
+        path: `/detail/${type}`,
+        query: {
+          id: row.id,
+        },
+      });
+    },
     //查看摄像头
     goCamera(row) {
       console.log(row);

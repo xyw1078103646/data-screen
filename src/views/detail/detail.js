@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:06:38
+ * @LastEditTime: 2022-05-23 11:31:12
  * @Description:
  */
 
@@ -20,9 +20,11 @@ export default {
     return {
       loading: false,
       tableData: [],
+      type: 1,
     };
   },
   mounted() {
+    this.type = this.$route.params.type;
     this.getList();
   },
   methods: {
@@ -33,6 +35,9 @@ export default {
       });
       this.loading = false;
       this.tableData = res.data;
+    },
+    changeType(val) {
+      this.type = val;
     },
   },
 };
