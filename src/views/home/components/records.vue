@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:20:55
+ * @LastEditTime: 2022-05-23 11:53:17
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -35,11 +35,11 @@
     <el-dialog
       title="报警详情"
       :visible.sync="detailFlag"
-      :fullscreen="true"
+      :fullscreen="false"
       :before-close="closeDialog"
     >
       <template v-if="detailData">
-        <el-descriptions title="设备信息">
+        <el-descriptions title="设备信息" :column="2">
           <el-descriptions-item label="安装位置">{{
             detailData.address
           }}</el-descriptions-item>
@@ -47,7 +47,7 @@
             detailData.kindName
           }}</el-descriptions-item>
         </el-descriptions>
-        <el-descriptions title="报警信息" class="sc-mt-3">
+        <el-descriptions title="报警信息" :column="2" class="sc-mt-3">
           <el-descriptions-item label="设备状态">{{
             detailData.status
           }}</el-descriptions-item>
@@ -61,7 +61,7 @@
             detailData.address
           }}</el-descriptions-item>
         </el-descriptions>
-        <el-descriptions title="处理信息" class="sc-mt-3">
+        <el-descriptions title="处理信息" :column="2" class="sc-mt-3">
           <el-descriptions-item label="处理方式">{{
             detailData.address
           }}</el-descriptions-item>
@@ -100,7 +100,7 @@ export default {
       const res = await getDetail({
         handle: row.handle,
         state: row.state,
-        deviceId: row.id,
+        deviceId: row.deviceId,
         timestamp: row.timestamp,
       });
       this.detailData = res.data;

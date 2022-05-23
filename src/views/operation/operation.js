@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:21:11
+ * @LastEditTime: 2022-05-23 11:54:35
  * @Description:
  */
 
@@ -191,7 +191,7 @@ export default {
       const res = await getDetail({
         handle: this.queryParams.handle,
         state: row.state,
-        deviceId: row.id,
+        deviceId: row.deviceId,
         timestamp: row.timestamp,
       });
       this.detailData = res.data;
@@ -205,7 +205,7 @@ export default {
       this.drawerFlag = true;
       const res = await getMsgCount({
         state: row.state,
-        deviceId: row.id,
+        deviceId: row.deviceId,
         startTime: row.createTime,
         endTime: row.updateTime,
         pageNum: this.deawerPage,
