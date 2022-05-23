@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-23 00:02:58
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-23 10:57:27
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -10,7 +10,7 @@
   <div class="box">
     <div class="head sc-flex sc-jc-center sc-ai-center sc-text-white sc-mb-1">
       <svg-icon icon-class="access"></svg-icon>
-      <div class="sc-ml-1 sc-fs-xxl">
+      <div class="sc-ml-1 sc-fs-xxl" @click="$router.push('/list')">
         设备接入数<span class="num">{{ list.total }}</span>
       </div>
     </div>

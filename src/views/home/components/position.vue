@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-18 11:00:09
+ * @LastEditTime: 2022-05-23 10:56:44
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,7 +12,9 @@
       <!-- <svg-icon icon-class="position"></svg-icon> -->
       <img src="../../../assets/images/home/position.png" alt="" />
       <div class="sc-ml-3">
-        <div class="num sc-mb-1">{{ list.total }}</div>
+        <div class="num sc-mb-1 sc-cursor" @click="$router.push('/patrol')">
+          {{ list.total }}
+        </div>
         <div class="text">需巡查重点部位</div>
       </div>
     </div>

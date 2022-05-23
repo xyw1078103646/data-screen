@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 10:26:06
+ * @LastEditTime: 2022-05-23 10:56:21
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,7 +12,9 @@
       <div class="left">
         <svg-icon class="sc-mr-1" icon-class="alarm"></svg-icon>
         <span class="sc-fs-xl">报警总数</span>
-        <span class="num">{{ list.total }}</span>
+        <span class="num sc-cursor" @click="$router.push('/operation')">{{
+          list.total
+        }}</span>
       </div>
       <div class="right">
         <svg-icon class="sc-mr-1" icon-class="sanjiao"></svg-icon>
