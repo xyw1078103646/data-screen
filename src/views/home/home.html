@@ -1,72 +1,72 @@
 <!--
  * @Author: xyw
  * @Date: 2022-05-13 15:42:47
- * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-15 11:00:01
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-23 10:14:33
  * @Description: 
 -->
 <div class="bg">
-    <div class="container h-100" v-loading="loading">
-        <div class="titleBox">
-            <div class="title"></div>
-        </div>
-        <div class="content sc-flex">
-            <!-- 左侧2/3 -->
-            <div class="left">
-                <div class="top sc-flex">
-                    <div class="lt">
-                        <!-- 单位简介 -->
-                        <div class="info sc-mb-2">
-                            <Panel title="单位简介">
-                                <Info></Info>
-                            </Panel>
-                        </div>
-                        <!-- 物联接入 -->
-                        <div class="access">
-                            <Panel title="物联接入">
-                                <Access v-if="access" :list="access"></Access>
-                            </Panel>
-                        </div>
-                    </div>
-                    <!-- 中心背景图  -->
-                    <div class="rt sc-flex-1"></div>
-                </div>
-                <div class="bottom sc-flex">
-                    <!-- 本月运维状态 -->
-                    <div class="runStatus sc-mr-2">
-                        <Panel title="本月运维状态">
-                            <run-status v-if="runStatus" :list="runStatus"></run-status>
-                        </Panel>
-                    </div>
-                    <!-- 实时报警 -->
-                    <div class="records sc-mr-2">
-                        <Panel title="实时报警">
-                            <Records v-if="records" :list="records"></Records>
-                        </Panel>
-                    </div>
-                    <!-- 人员管理 -->
-                    <div class="manager">
-                        <Panel title="人员管理">
-                            <Manager v-if="manager" :list="manager"></Manager>
-                        </Panel>
-                    </div>
-                </div>
-            </div>
-            <!-- 右侧 -->
-            <div class="right">
-                <!-- 巡查管理 -->
-                <div class="position sc-mb-2">
-                    <Panel title="巡查管理">
-                        <Position v-if="position" :list="position"></Position>
-                    </Panel>
-                </div>
-                <!-- 运营统计 -->
-                <div class="alarm">
-                    <Panel title="运营统计">
-                        <Alarm v-if="alarm" :list="alarm"></Alarm>
-                    </Panel>
-                </div>
-            </div>
-        </div>
+  <div class="container h-100" v-loading="loading">
+    <div class="titleBox">
+      <div class="title"></div>
     </div>
+    <div class="content sc-flex">
+      <!-- 左侧2/3 -->
+      <div class="left">
+        <div class="top sc-flex">
+          <div class="lt">
+            <!-- 单位简介 -->
+            <div class="info sc-mb-2">
+              <Panel title="单位简介">
+                <Info></Info>
+              </Panel>
+            </div>
+            <!-- 物联接入 -->
+            <div class="access">
+              <Panel title="物联接入" toUrl="/list">
+                <Access v-if="access" :list="access"></Access>
+              </Panel>
+            </div>
+          </div>
+          <!-- 中心背景图  -->
+          <div class="rt sc-flex-1"></div>
+        </div>
+        <div class="bottom sc-flex">
+          <!-- 本月运维状态 -->
+          <div class="runStatus sc-mr-2">
+            <Panel title="本月运维状态" toUrl="/device/1">
+              <run-status v-if="runStatus" :list="runStatus"></run-status>
+            </Panel>
+          </div>
+          <!-- 实时报警 -->
+          <div class="records sc-mr-2">
+            <Panel title="实时报警">
+              <Records v-if="records" :list="records"></Records>
+            </Panel>
+          </div>
+          <!-- 人员管理 -->
+          <div class="manager">
+            <Panel title="人员管理">
+              <Manager v-if="manager" :list="manager"></Manager>
+            </Panel>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧 -->
+      <div class="right">
+        <!-- 巡查管理 -->
+        <div class="position sc-mb-2">
+          <Panel title="巡查管理" toUrl="/patrol">
+            <Position v-if="position" :list="position"></Position>
+          </Panel>
+        </div>
+        <!-- 运营统计 -->
+        <div class="alarm">
+          <Panel title="运营统计" toUrl="/operation">
+            <Alarm v-if="alarm" :list="alarm"></Alarm>
+          </Panel>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

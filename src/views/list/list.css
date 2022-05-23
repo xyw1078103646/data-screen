@@ -1,0 +1,67 @@
+.box {
+  padding: 0 80px;
+}
+.box .head {
+  height: 60px;
+}
+.box .head .sc-text-white {
+  font-size: 20px;
+}
+.box .head .t {
+  font-size: 28px;
+}
+.box .head .svg-icon {
+  width: 12px;
+  height: 12px;
+  margin-left: 6px;
+}
+.box .tab {
+  height: 48px;
+  position: relative;
+  padding: 0 55px;
+}
+.box .tab .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.box .tab .arrow.lt-arrow {
+  left: 0;
+}
+.box .tab .arrow.rt-arrow {
+  right: 0;
+}
+.box .tab .tagBox {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.box .tab .tagBox .tagContent {
+  transition: all 0.4s;
+}
+.box .tab .tagBox .tag {
+  min-width: 114px;
+  text-align: center;
+  height: 48px;
+  background: #0F5094;
+  border-radius: 4px;
+  padding: 15px 16px;
+  font-size: 18px;
+  color: #fff;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.box .tab .tagBox .tag.isActive,
+.box .tab .tagBox .tag:hover {
+  background: linear-gradient(0deg, #1981F4 0%, #4CD1FF 100%);
+  font-weight: bold;
+}
+.box .sc-cursor:hover {
+  color: #4CD1FF;
+}

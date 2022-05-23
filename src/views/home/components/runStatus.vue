@@ -2,21 +2,26 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 10:24:18
+ * @LastEditTime: 2022-05-23 10:24:21
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="box">
     <div class="head sc-flex sc-ai-center sc-jc-center">
-      <div class="tag sc-mr-6">
-        <div class="top blue">在线设备</div>
+      <div class="tag sc-mr-6 sc-cursor" @click="$router.push('/device/1')">
+        <!-- <div class="top blue">在线设备</div> -->
+        <div class="top blue">故障设备</div>
         <div class="bottom sc-flex sc-ai-center sc-jc-center blue">
-          {{ list.runStatusCount[0].count }}<span class="sc-fs-xl">个</span>
+          <!-- {{ list.runStatusCount[0].count }} -->
+          {{ list.error }}
+          <span class="sc-fs-xl">个</span>
         </div>
       </div>
-      <div class="tag">
-        <div class="top orange">离线设备</div>
+      <div class="tag sc-cursor">
+        <div class="top orange" @click="$router.push('/device/2')">
+          离线设备
+        </div>
         <div class="bottom sc-flex sc-ai-center sc-jc-center orange">
           {{ list.runStatusCount[1].count }}<span class="sc-fs-xl">个</span>
         </div>

@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-16 09:23:38
+ * @LastEditTime: 2022-05-23 10:20:55
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,10 +11,10 @@
     <el-scrollbar class="h-100">
       <div class="itemBox">
         <div
-          class="item sc-flex sc-ai-center"
+          class="item sc-flex sc-ai-center sc-cursor"
           v-for="item in list"
           :key="item.id"
-          @click="handleClick(item.id)"
+          @click="goDetail(item)"
         >
           <svg-icon icon-class="records"></svg-icon>
           <div class="sc-fs-ellipsis sc-text-white">{{ item.stateName }}</div>
@@ -31,10 +31,54 @@
         </div>
       </div>
     </el-scrollbar>
+    <!-- 报警详情 -->
+    <el-dialog
+      title="报警详情"
+      :visible.sync="detailFlag"
+      :fullscreen="true"
+      :before-close="closeDialog"
+    >
+      <template v-if="detailData">
+        <el-descriptions title="设备信息">
+          <el-descriptions-item label="安装位置">{{
+            detailData.address
+          }}</el-descriptions-item>
+          <el-descriptions-item label="设备类型">{{
+            detailData.kindName
+          }}</el-descriptions-item>
+        </el-descriptions>
+        <el-descriptions title="报警信息" class="sc-mt-3">
+          <el-descriptions-item label="设备状态">{{
+            detailData.status
+          }}</el-descriptions-item>
+          <el-descriptions-item label="报警明细">{{
+            detailData.address
+          }}</el-descriptions-item>
+          <el-descriptions-item label="报警时间">{{
+            detailData.address
+          }}</el-descriptions-item>
+          <el-descriptions-item label="通知次数">{{
+            detailData.address
+          }}</el-descriptions-item>
+        </el-descriptions>
+        <el-descriptions title="处理信息" class="sc-mt-3">
+          <el-descriptions-item label="处理方式">{{
+            detailData.address
+          }}</el-descriptions-item>
+          <el-descriptions-item label="处理时间">{{
+            detailData.address
+          }}</el-descriptions-item>
+          <el-descriptions-item label="处理照片">{{
+            detailData.address
+          }}</el-descriptions-item>
+        </el-descriptions>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import { getDetail } from "@/api/operationApi.js";
 export default {
   props: {
     list: {
@@ -44,9 +88,29 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      detailFlag: false,
+      detailData: null,
+    };
+  },
   methods: {
-    //处理报警
-    handleClick() {},
+    //打开详情弹框
+    async goDetail(row) {
+      const res = await getDetail({
+        handle: row.handle,
+        state: row.state,
+        deviceId: row.id,
+        timestamp: row.timestamp,
+      });
+      this.detailData = res.data;
+      this.detailFlag = true;
+    },
+    //关闭弹框
+    closeDialog() {
+      this.detailData = null;
+      this.detailFlag = false;
+    },
   },
 };
 </script>

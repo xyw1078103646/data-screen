@@ -1,0 +1,91 @@
+<!--
+ * @Author: xyw
+ * @Date: 2022-05-16 10:58:50
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-20 14:47:18
+ * @Description: 
+-->
+<Panel>
+  <div class="box">
+    <div class="head sc-flex sc-ai-center sc-jc-between sc-mb-2">
+      <div class="t sc-text-white">巡查管理</div>
+      <div
+        class="sc-text-white sc-flex sc-ai-center sc-cursor"
+        @click="$router.push('/')"
+      >
+        <span>关闭</span>
+        <i class="el-icon-close"></i>
+      </div>
+    </div>
+    <div class="searchBox sc-mt-2">
+      <el-form :inline="true" :model="queryParams">
+        <el-form-item label="点位名称：">
+          <el-input
+            class="w-160"
+            v-model="queryParams.name"
+            placeholder="点位名称"
+            @keyup.enter.native="search"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="安装位置：">
+          <el-input
+            class="w-160"
+            v-model="queryParams.address"
+            placeholder="安装位置"
+            @keyup.enter.native="search"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="巡查状态：">
+          <el-select
+            class="w-160"
+            v-model="queryParams.status"
+            placeholder="请选择"
+            @change="search"
+          >
+            <el-option label="未巡查" :value="1"></el-option>
+            <el-option label="已巡查" :value="2"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button class="sc-mr-2" icon="el-icon-refresh-right" @click="reset"
+            >重置</el-button
+          >
+          <el-button icon="el-icon-search" type="primary" @click="search"
+            >搜索</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="tableBox">
+      <table-panel>
+        <el-table :data="tableData" class="w-100 " v-loading="loading">
+          <div
+            class="sc-flex sc-ai-center sc-jc-center"
+            style="height:3rem"
+            slot="empty"
+          >
+            <div class="sc-text-ct">
+              <img src="../../assets/images//list/nodata.png" alt="" />
+              <div class="w-100">暂无数据</div>
+            </div>
+          </div>
+          <el-table-column type="index" align="center" width="100" label="序号">
+          </el-table-column>
+          <el-table-column prop="name" label="点位名称"></el-table-column>
+          <el-table-column prop="address" label="安装位置"></el-table-column>
+          <el-table-column prop="type" label="类型"></el-table-column>
+          <el-table-column prop="statusName" label="巡查状态"></el-table-column>
+        </el-table>
+      </table-panel>
+      <div class="page sc-mt-2 sc-text-rt sc-text-white">
+        <el-pagination
+          background
+          :total="total"
+          :currentPage.sync="queryParams.pageNum"
+          @current-change="handleChange"
+        >
+        </el-pagination>
+      </div>
+    </div>
+  </div>
+</Panel>

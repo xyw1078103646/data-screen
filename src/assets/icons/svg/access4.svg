@@ -1,6 +1,13 @@
-<svg 
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- width="20px" height="20px">
-<image  x="0px" y="0px" width="20px" height="20px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZIAAACUCAMAAACOcl9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAt1BMVEX///8269Iu6tC++PDW+/bM+fPN+vTc+/ff/PjO+vTF+fIv6tEz69Ej6c6j9uo669Ok9uur9+yO8+Ur6tCp9utD7NWV9Ocl6c4n6c+q9uxI7dYp6s+X9OdG7NYm6c+W9Oel9uuw9+3B+fG09+5B7NWL8+W2+O+3+O+7+PDv/ftZ7trb+/b8//7E+fLG+fJS7djB+PE26tK59+6z9+6X9ej3/v1f8Nt88uKD8+Np8N6V9ehx8d9d79t+5koeAAAAAWJLR0QAiAUdSAAAAAd0SU1FB+YFEBUxMoBXvXkAAAEQSURBVHja7djHTsNAGIVRUxxKGAiEEjokEHrv5f2fi5DYwmzZ/EY5ZzGzvdK3GGmyDAAAAAAAAAAAAAAAAAAAAAAA/qmJyanpvJHnM1k2m+eNxtx8cyF605hLaXEpfWstD6+0klL0pjHXTqtrqWp9oxO9acy10+ZWtcj2jiTBJKmdQZLdapK9fUmCddJB89db4nmPltJht9c7Knoc9/onkgQ77Z8NzvMiyUWWXV5dR29i4KZIchs9hFKZpBs9hJIktSNJ7UhSO5LUjiS1c1ckuY8eQunhceQpeggjreeX15G39+gtDH38fDp+Rm8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC/+wI1lhYqoXDW5AAAAABJRU5ErkJggg==" />
+<svg id="组_82" data-name="组 82" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="33" viewBox="0 0 33 33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1d3598;
+        stroke: #03a2ff;
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <rect id="矩形_14_拷贝_5" data-name="矩形 14 拷贝 5" class="cls-1" x="0.5" y="0.5" width="32" height="32" rx="4" ry="4"/>
+  <image id="消防栓-离线" x="6.5" y="7.5" width="20" height="20" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABjUlEQVQ4ja2UvU7cQBSFvzPrREIg6FKAhEAoT0FN2qRDeQRIwUuAxAtQ0NAgWiS6FIg3IEqF0qVJQ0GFBAFl56Cxx95d42X5ySnssTX3mzP3zh2tXP64BKawv9r8AWYAA6J6XLkXfil99eNHmw9Ucn5H4WlCOAb+FZAniCVJ+8ACLQl/w9wiHZTgtsw2MJv+JuBt6RDugJuO6Slgr/P/QH+T07SHMBIG9xMCu3SXYaXCi0KfoTaw9wpGry4gOYdFHr8D5l8BLHINkrlQZFDK4DViHZjLE3eAlfEc74J+5vw1OSwQX4D3cjzD4coSjkbSBhoPVIyHKFyk+bJ7ltYSODk8GVk3uj7WU0/vVIu4f6GqDH3glNGiiGjXw8mq+6iOGUpoTuFzKJPVOGwt9EIZOQ4cuv8mWnYUESL8F1gpldDQXEIeupDeoEJBzQIV19UxFUtPb9Gdx6pod6/cVHsLWB6/Q30vm+ARsGmaRpsEPmN+53uu26DCEdI5dmrRIeBjrWI+jXU2QvWs0AAIPABfnXkw6/DybwAAAABJRU5ErkJggg=="/>
 </svg>

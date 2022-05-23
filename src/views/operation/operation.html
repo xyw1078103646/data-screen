@@ -1,206 +1,150 @@
 <!--
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-19 19:53:45
+ * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
+ * @LastEditTime: 2022-05-22 10:48:53
  * @Description: 
 -->
 <Panel>
-  <div class="box">
-    <div class="head sc-flex sc-ai-center sc-jc-between sc-mb-2">
-      <div class="t sc-text-white">运营统计</div>
-      <div
-        class="sc-text-white sc-flex sc-ai-center sc-cursor"
-        @click="$router.push('/')"
-      >
-        <span>关闭</span>
-        <i class="el-icon-close"></i>
-      </div>
-    </div>
-    <div class="tabBox sc-flex  sc-mt-6 sc-text-white sc-fs-xxl">
-      <div
-        class="tab sc-mr-3"
-        :class="{isActive:queryParams.handle == 1}"
-        @click="changeHandle(1)"
-      >
-        待处理
-      </div>
-      <div
-        class="tab"
-        :class="{isActive:queryParams.handle == 2}"
-        @click="changeHandle(2)"
-      >
-        已处理
-      </div>
-    </div>
-    <div class="searchBox sc-mt-2">
-      <el-form :inline="true" :model="queryParams">
-        <el-form-item label="设备名称：">
-          <el-input
-            class="w-160"
-            v-model="queryParams.name"
-            placeholder="设备名称"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="安装地址：">
-          <el-input
-            class="w-160"
-            v-model="queryParams.address"
-            placeholder="安装地址"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="设备类型：">
-          <el-select
-            class="w-160"
-            v-model="queryParams.kind"
-            placeholder="请选择"
-            @change="search"
-          >
-            <el-option
-              v-for="item in tabList"
-              :key="item.code + item.label"
-              :label="item.label"
-              :value="item.code"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="报警类型：">
-          <el-select
-            class="w-160"
-            v-model="queryParams.typeName"
-            placeholder="请选择"
-            @change="search"
-          >
-            <el-option
-              v-for="item in typeList"
-              :key="item.label"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="报警时间：">
-          <el-date-picker
-            style="width:1.35rem"
-            v-model="dateArr"
-            valueFormat="YYYY年MM月DD日"
-            @change="changeDate"
-            type="daterange"
-            range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-          >
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="通讯地址：" v-if="queryParams.handle == 1">
-          <el-input
-            class="w-160"
-            v-model="queryParams.networkAddr"
-            placeholder="通讯地址"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="处理结果：" v-if="queryParams.handle == 2">
-          <el-select
-            class="w-160"
-            v-model="queryParams.resourceName"
-            placeholder="请选择"
-            @change="search"
-          >
-            <el-option
-              v-for="item in resourceList"
-              :key="item.label"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button class="sc-mr-2" icon="el-icon-refresh-right" @click="reset"
-            >重置</el-button
-          >
-          <el-button icon="el-icon-search" type="primary" @click="search"
-            >搜索</el-button
-          >
-        </el-form-item>
-      </el-form>
-    </div>
-    <div class="tableBox">
-      <table-panel>
-        <el-table
-          height="3.1rem"
-          :data="tableData"
-          class="w-100 "
-          v-loading="loading"
-        >
-          <el-table-column type="index" align="center" width="100" label="序号">
-          </el-table-column>
-          <el-table-column prop="name" label="设备名称"></el-table-column>
-          <el-table-column
-            prop="address"
-            label="安装地址"
-            :show-overflow-tooltip="true"
-          ></el-table-column>
-          <el-table-column prop="kindName" label="设备类型"></el-table-column>
-          <el-table-column
-            prop="networkAddr"
-            label="通讯地址"
-          ></el-table-column>
-          <el-table-column prop="typeName" label="报警类型"></el-table-column>
-          <el-table-column prop="createTime" label="报警时间"></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 1"
-            prop="updateTime"
-            label="最新通知时间"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 1"
-            prop="count"
-            label="通知次数"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 1"
-            prop="remark"
-            label="备注"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 2"
-            prop="modeName"
-            label="处理方式"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 2"
-            prop="resourceName"
-            label="处理结果"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 2"
-            prop="userName"
-            label="处理人"
-          ></el-table-column>
-          <el-table-column
-            v-if="queryParams.handle == 2"
-            prop="updateTime"
-            label="处理时间"
-          ></el-table-column>
-          <el-table-column v-if="queryParams.handle == 2" label="操作">
-            <template slot-scope="scope">
+    <div class="box">
+        <div class="head sc-flex sc-ai-center sc-jc-between sc-mb-2">
+            <div class="t sc-text-white">运营统计</div>
+            <div class="sc-text-white sc-flex sc-ai-center sc-cursor" @click="$router.push('/')">
+                <span>关闭</span>
+                <i class="el-icon-close"></i>
+            </div>
+        </div>
+        <div class="tabBox sc-flex  sc-mt-6 sc-text-white sc-fs-xxl">
+            <div class="tab sc-mr-3" :class="{isActive:queryParams.handle == 1}" @click="changeHandle(1)">
+                待处理
+            </div>
+            <div class="tab" :class="{isActive:queryParams.handle == 2}" @click="changeHandle(2)">
+                已处理
+            </div>
+        </div>
+        <div class="searchBox sc-mt-2">
+            <el-form :inline="true" :model="queryParams">
+                <el-form-item label="设备名称：">
+                    <el-input class="w-160" v-model="queryParams.name" placeholder="设备名称" @keyup.enter.native="search"></el-input>
+                </el-form-item>
+                <el-form-item label="安装地址：">
+                    <el-input class="w-160" v-model="queryParams.address" placeholder="安装地址" @keyup.enter.native="search">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="设备类型：">
+                    <el-select class="w-160" v-model="queryParams.kind" placeholder="请选择" @change="search">
+                        <el-option v-for="item in tabList" :key="item.code + item.label" :label="item.label" :value="item.code">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="报警类型：">
+                    <el-select class="w-160" v-model="queryParams.typeName" placeholder="请选择" @change="search">
+                        <el-option v-for="item in typeList" :key="item.label" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="报警时间：">
+                    <el-date-picker style="width:1.35rem" v-model="dateArr" valueFormat="yyyy年MM月DD日" @change="changeDate" type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item label="通讯地址：" v-if="queryParams.handle == 1">
+                    <el-input class="w-160" v-model="queryParams.networkAddr" placeholder="通讯地址" @keyup.enter.native="search">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="处理结果：" v-if="queryParams.handle == 2">
+                    <el-select class="w-160" v-model="queryParams.resourceName" placeholder="请选择" @change="search">
+                        <el-option v-for="item in resourceList" :key="item.label" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-button class="sc-mr-2" icon="el-icon-refresh-right" @click="reset">重置</el-button>
+                    <el-button icon="el-icon-search" type="primary" @click="search">搜索</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class="tableBox">
+            <table-panel>
+                <el-table :data="tableData" class="w-100 " v-loading="loading">
+                    <div class="sc-flex sc-ai-center sc-jc-center" style="height:3rem" slot="empty">
+                        <div class="sc-text-ct">
+                            <img src="../../assets/images//list/nodata.png" alt="" />
+                            <div class="w-100">暂无数据</div>
+                        </div>
+                    </div>
+                    <el-table-column type="index" align="center" width="100" label="序号">
+                    </el-table-column>
+                    <el-table-column prop="name" label="设备名称" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column prop="address" label="安装地址" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column prop="kindName" label="设备类型"></el-table-column>
+                    <el-table-column prop="networkAddr" label="通讯地址" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column prop="typeName" label="报警类型"></el-table-column>
+                    <el-table-column prop="createTime" label="报警时间" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column v-if="queryParams.handle == 1" prop="updateTime" label="最新通知时间" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column v-if="queryParams.handle == 1" prop="count" label="通知次数">
+                        <template slot-scope="scope">
+              <span class="sc-cursor" @click="getDrawer(scope.row)">{{scope.row.count}}</span>
+            </template>
+                    </el-table-column>
+                    <el-table-column v-if="queryParams.handle == 1" prop="remark" label="备注"></el-table-column>
+                    <el-table-column v-if="queryParams.handle == 2" prop="modeName" label="处理方式" :show-overflow-tooltip="true">
+                    </el-table-column>
+                    <el-table-column v-if="queryParams.handle == 2" prop="resourceName" label="处理结果" :show-overflow-tooltip="true"></el-table-column>
+                    <el-table-column v-if="queryParams.handle == 2" prop="userName" label="处理人"></el-table-column>
+                    <el-table-column v-if="queryParams.handle == 2" prop="updateTime" label="处理时间" :show-overflow-tooltip="true">
+                    </el-table-column>
+                    <el-table-column label="操作" fixed="right">
+                        <template slot-scope="scope">
               <span class="sc-cursor" @click="goDetail(scope.row)">详情</span>
             </template>
-          </el-table-column>
-        </el-table>
-      </table-panel>
-      <div class="page sc-mt-2 sc-text-rt sc-text-white">
-        <el-pagination
-          background
-          :total="total"
-          :currentPage.sync="queryParams.pageNum"
-          @current-change="handleChange"
-        >
-        </el-pagination>
-      </div>
+                    </el-table-column>
+                </el-table>
+            </table-panel>
+            <div class="page sc-mt-2 sc-text-rt sc-text-white">
+                <el-pagination background :total="total" :currentPage.sync="queryParams.pageNum" @current-change="handleChange">
+                </el-pagination>
+            </div>
+        </div>
+        <!-- 通知次数抽屉 -->
+        <el-drawer title="通知次数" :visible.sync="drawerFlag" :before-close="closeDrawer">
+            <div class="tableBox sc-p-2">
+                <table-panel>
+                    <el-table :data="drawerData" class="w-100">
+                        <div class="sc-flex sc-ai-center sc-jc-center" style="height:2rem" slot="empty">
+                            <div class="sc-text-ct">
+                                <img src="../../assets/images//list/nodata.png" alt="" />
+                                <div class="w-100">暂无数据</div>
+                            </div>
+                        </div>
+                        <el-table-column type="index" align="center" width="100" label="序号">
+                        </el-table-column>
+                        <el-table-column prop="time" label="通知时间"></el-table-column>
+                    </el-table>
+                </table-panel>
+                <div class="page sc-mt-2 sc-text-rt sc-text-white">
+                    <el-pagination background :total="drawerTotal" :currentPage.sync="drawerPage" @current-change="handleChangeDrawer">
+                    </el-pagination>
+                </div>
+            </div>
+        </el-drawer>
+        <!-- 详情 -->
+        <el-dialog title="报警详情" :visible.sync="detailFlag" :fullscreen="true" :before-close="closeDialog">
+            <template v-if="detailData">
+        <el-descriptions title="设备信息">
+          <el-descriptions-item label="安装位置">{{detailData.address}}</el-descriptions-item>
+          <el-descriptions-item label="设备类型">{{detailData.kindName}}</el-descriptions-item>
+        </el-descriptions>
+        <el-descriptions title="报警信息" class="sc-mt-3">
+          <el-descriptions-item label="设备状态">{{detailData.status}}</el-descriptions-item>
+          <el-descriptions-item label="报警明细">{{detailData.address}}</el-descriptions-item>
+          <el-descriptions-item label="报警时间">{{detailData.address}}</el-descriptions-item>
+          <el-descriptions-item label="通知次数">{{detailData.address}}</el-descriptions-item>
+        </el-descriptions>
+        <el-descriptions title="处理信息" class="sc-mt-3">
+          <el-descriptions-item label="处理方式">{{detailData.address}}</el-descriptions-item>
+          <el-descriptions-item label="处理时间">{{detailData.address}}</el-descriptions-item>
+          <el-descriptions-item label="处理照片">{{detailData.address}}</el-descriptions-item>
+        </el-descriptions>
+      </template>
+        </el-dialog>
     </div>
-  </div>
 </Panel>

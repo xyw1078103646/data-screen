@@ -159,14 +159,26 @@ a {
 .el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
   background: transparent;
 }
+.el-table__fixed-right::before,
+.el-table__fixed::before {
+  background: transparent;
+}
+.el-table__body tr.hover-row.current-row > td.el-table__cell,
+.el-table__body tr.hover-row.el-table__row--striped.current-row > td.el-table__cell,
+.el-table__body tr.hover-row.el-table__row--striped > td.el-table__cell,
+.el-table__body tr.hover-row > td.el-table__cell {
+  background: transparent;
+}
 .el-table {
   color: #d0d0d0;
   background-color: transparent;
   border: 2px solid #1A3F72;
-  border-bottom: none;
 }
 .el-table::before {
   background-color: transparent;
+}
+.el-table table {
+  width: 100% !important;
 }
 .el-table tr {
   height: 54px;
@@ -175,6 +187,9 @@ a {
 }
 .el-table tr:nth-child(2n) {
   background: #21297B;
+}
+.el-table tr:last-child td.el-table__cell {
+  border-bottom: none;
 }
 .el-table thead tr,
 .el-table thead th {
@@ -209,4 +224,66 @@ a {
 }
 .el-pagination__total {
   margin-left: 20px;
+}
+.el-form-item__label {
+  color: #fff;
+}
+.el-form-item {
+  margin-right: 37px !important;
+}
+.el-range-input {
+  background-color: transparent;
+}
+.el-button {
+  color: #fff;
+  border: none;
+}
+.el-button--default {
+  background: #0F5094;
+}
+.el-button--primary {
+  background: linear-gradient(0deg, #1981F4 0%, #4CD1FF 100%);
+}
+.el-dialog {
+  background-color: transparent;
+  background-image: url('../images/home/bg.png');
+  background-size: 100% 100%;
+}
+.el-dialog .el-dialog__title,
+.el-dialog .el-dialog__body {
+  color: #fff !important;
+}
+.el-drawer {
+  background-color: transparent;
+  background-image: url('../images/home/bg.png');
+  background-size: 100% 100%;
+  color: #fff !important;
+}
+.el-drawer header {
+  color: #fff !important;
+  font-size: 20px;
+}
+.el-descriptions .el-descriptions__header {
+  background: #0F5094;
+  margin-bottom: 0;
+  height: 40px;
+  color: #fff;
+  padding: 0 15px;
+}
+.el-descriptions .el-descriptions__body {
+  padding: 0 15px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #0F5094;
+}
+.el-descriptions .el-descriptions__body .el-descriptions-row {
+  border-bottom: 1px solid #0F5094;
+}
+.el-descriptions .el-descriptions__body tbody:last-child .el-descriptions-row {
+  border-bottom: none;
+}
+.el-descriptions :not(.is-bordered) .el-descriptions-item__cell {
+  padding-bottom: 0;
+  height: 40px;
+  line-height: 40px;
 }

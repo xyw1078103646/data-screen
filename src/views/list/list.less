@@ -1,65 +1,82 @@
 .box {
-    padding:0 80px;
+    padding: 0 80px;
+
     .head {
-        height:60px;
+        height: 60px;
+
         .sc-text-white {
             font-size: 20px;
         }
+
         .t {
             font-size: 28px;
         }
+
         .svg-icon {
-            width:12px;
-            height:12px;
-            margin-left:6px;
+            width: 12px;
+            height: 12px;
+            margin-left: 6px;
         }
     }
+
     .tab {
         height: 48px;
         position: relative;
-        padding:0 55px;
+        padding: 0 55px;
+
         .arrow {
-            position:absolute;           
-            top:50%;
-            transform: translate(0,-50%);
-            width:28px;
-            height:28px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 28px;
+            height: 28px;
             line-height: 28px;
             text-align: center;
             border: 1px solid #FFFFFF;
             border-radius: 4px;
             cursor: pointer;
+
             &.lt-arrow {
-                left:0;
+                left: 0;
             }
+
             &.rt-arrow {
-                right:0;
+                right: 0;
             }
         }
+
         .tagBox {
             white-space: nowrap;
             overflow: hidden;
+
+            .tagContent {
+                transition: all 0.4s;
+            }
+
             .tag {
-                min-width:114px;
+                min-width: 114px;
                 text-align: center;
                 height: 48px;
                 background: #0F5094;
                 border-radius: 4px;
                 padding: 15px 16px;
                 font-size: 18px;
-                color:#fff;
-                margin-right:14px;
+                color: #fff;
+                margin-right: 14px;
                 cursor: pointer;
-                &.isActive,&:hover {
+
+                &.isActive,
+                &:hover {
                     background: linear-gradient(0deg, #1981F4 0%, #4CD1FF 100%);
                     font-weight: bold;
                 }
             }
         }
     }
+
     .sc-cursor {
         &:hover {
-            color:#4CD1FF;
+            color: #4CD1FF;
         }
     }
 }

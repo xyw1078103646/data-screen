@@ -2,13 +2,13 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-19 19:37:20
+ * @LastEditTime: 2022-05-23 10:21:11
  * @Description:
  */
 
 import Panel from "../list/components/panel.vue";
 import TablePanel from "../list/components/tablePanel.vue";
-import { getOperation } from "@/api/operationApi.js";
+import { getOperation, getDetail, getMsgCount } from "@/api/operationApi.js";
 
 export default {
   name: "list",
@@ -19,6 +19,12 @@ export default {
   data() {
     return {
       loading: false,
+      detailFlag: false,
+      detailData: null,
+      drawerFlag: false,
+      drawerData: [],
+      drawerPage: 1,
+      drawerTotal: 0,
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -32,6 +38,7 @@ export default {
         networkAddr: "", //通讯地址
         resourceName: undefined, //处理结果
       },
+      deawerPage: 1,
       dateArr: [],
       tabList: [
         {
@@ -148,10 +155,10 @@ export default {
       this.getList();
     },
     reset() {
+      let handle = this.queryParams.handle;
       this.queryParams = {
         pageNum: 1,
         pageSize: 10,
-        handle: 1, //处理状态 1:未处理 2:已处理
         name: "", //设备名称
         address: "", //安装地址
         kind: undefined, //设备类型
@@ -161,6 +168,7 @@ export default {
         networkAddr: "", //通讯地址
         resourceName: undefined, //处理结果
       };
+      this.queryParams.handle = handle;
       this.getList();
     },
     async getList() {
@@ -177,7 +185,41 @@ export default {
     },
     changeHandle(val) {
       this.queryParams.handle = val;
-      this.search();
+      this.reset();
+    },
+    async goDetail(row) {
+      const res = await getDetail({
+        handle: this.queryParams.handle,
+        state: row.state,
+        deviceId: row.id,
+        timestamp: row.timestamp,
+      });
+      this.detailData = res.data;
+      this.detailFlag = true;
+    },
+    closeDialog() {
+      this.detailData = null;
+      this.detailFlag = false;
+    },
+    async getDrawer(row) {
+      this.drawerFlag = true;
+      const res = await getMsgCount({
+        state: row.state,
+        deviceId: row.id,
+        startTime: row.createTime,
+        endTime: row.updateTime,
+        pageNum: this.deawerPage,
+        pageSize: 10,
+      });
+      this.drawerData = res.data.list || [];
+      this.drawerTotal = res.data.total;
+    },
+    closeDrawer() {
+      this.drawerFlag = false;
+    },
+    handleChangeDrawer(pageNum) {
+      this.deawerPage = pageNum;
+      this.getDrawer();
     },
   },
 };

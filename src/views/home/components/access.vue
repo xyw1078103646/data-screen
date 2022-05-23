@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-18 10:43:10
+ * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
+ * @LastEditTime: 2022-05-23 00:02:58
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -21,9 +21,10 @@
       >
         <div class="itemBox sc-flex sc-flex-wrap sc-px-1">
           <div
-            class="item w-50 sc-flex sc-ai-center"
+            class="item w-50 sc-flex sc-ai-center sc-cursor"
             v-for="child in item"
             :key="child.kindName"
+            @click="$router.push(`/list?kind=${child.kind}`)"
           >
             <!-- <svg-icon :icon-class="child.kindName"></svg-icon>   -->
             <svg-icon :icon-class="'access' + child.kind"></svg-icon>
@@ -46,9 +47,10 @@
     <div v-else style="height:0.94rem">
       <div class="itemBox sc-flex sc-flex-wrap sc-px-1">
         <div
-          class="item w-50 sc-flex sc-ai-center"
+          class="item w-50 sc-flex sc-ai-center sc-cursor"
           v-for="child in carousel[0]"
           :key="child.kindName"
+          @click="$router.push(`/list?kind=${child.kind}`)"
         >
           <!-- <svg-icon :icon-class="child.kindName"></svg-icon>   -->
           <svg-icon :icon-class="'access' + child.kind"></svg-icon>
