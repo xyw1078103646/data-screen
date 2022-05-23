@@ -1,8 +1,8 @@
 <!--
  * @Author: xyw
  * @Date: 2022-05-11 11:16:35
- * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
- * @LastEditTime: 2022-05-18 22:19:53
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-23 15:57:08
  * @Description: 
 -->
 <template>
@@ -46,7 +46,9 @@ export default {
   },
   methods: {
     goPage() {
-      this.$router.push(this.toUrl);
+      if (this.toUrl) {
+        this.$router.push(this.toUrl);
+      }
     },
   },
 };

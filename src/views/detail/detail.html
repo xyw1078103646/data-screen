@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:47:55
+ * @LastEditTime: 2022-05-23 17:48:42
  * @Description: 
 -->
 <Panel>
@@ -21,9 +21,41 @@
         </div>
       </div>
     </div>
-    <div class="contentBox">
+    <div class="contentBox sc-text-D0">
       <table-panel>
-        <div class="box"></div>
+        <div class="box sc-flex">
+          <!-- 左侧部分 -->
+          <div class="left sc-mr-4">
+            <div class="t sc-fs-xl">有功功率--当前值</div>
+            <div class="gridBox">
+              <div class="gridItem" v-for="item in 4">
+                <div class="headBox sc-flex">
+                  <div class="cli sc-mr-1">P</div>
+                  <div>
+                    <div class="t1 sc-fs-lg sc-text-white">A相有功功率</div>
+                    <div class="t2 sc-fs-md">1路通道</div>
+                  </div>
+                </div>
+                <div class="num sc-text-ct">94</div>
+                <div class="unit sc-mt-1 sc-text-ct">当前值(KM)</div>
+                <div class="line sc-mb-1"></div>
+                <div class="desc sc-fs-lg">参考阀值--</div>
+              </div>
+              <!-- <div class="gridItem"></div>
+              <div class="gridItem"></div>
+              <div class="gridItem"></div> -->
+            </div>
+            <div class="sc-mt-2 his">
+              <span class="sc-mr-1">查看历史记录</span>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+          </div>
+          <!-- 右侧部分 -->
+          <div class="right">
+            <div class="t sc-fs-xl">检测值历史数据</div>
+            <div class="echart"></div>
+          </div>
+        </div>
       </table-panel>
     </div>
   </div>
