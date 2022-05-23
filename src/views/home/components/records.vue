@@ -1,15 +1,20 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:20:55
+ * @LastEditors: lz
+ * @LastEditTime: 2022-05-23 13:37:34
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="box">
     <el-scrollbar class="h-100">
-      <div class="itemBox">
+      <div
+        class="itemBox"
+        :style="{
+          animationDuration: getDuration
+        }"
+      >
         <div
           class="item sc-flex sc-ai-center sc-cursor"
           v-for="item in list"
@@ -85,14 +90,19 @@ export default {
       type: Array,
       default() {
         return [];
-      },
-    },
+      }
+    }
   },
   data() {
     return {
       detailFlag: false,
-      detailData: null,
+      detailData: null
     };
+  },
+  computed: {
+    getDuration() {
+      return this.list.length * 2 + "s";
+    }
   },
   methods: {
     //打开详情弹框
@@ -101,7 +111,7 @@ export default {
         handle: row.handle,
         state: row.state,
         deviceId: row.id,
-        timestamp: row.timestamp,
+        timestamp: row.timestamp
       });
       this.detailData = res.data;
       this.detailFlag = true;
@@ -110,12 +120,20 @@ export default {
     closeDialog() {
       this.detailData = null;
       this.detailFlag = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
+@keyframes myScroll {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 .box {
   padding: 22px 15px;
   height: 350px;
@@ -124,6 +142,10 @@ export default {
     overflow-x: hidden;
   }
   .itemBox {
+    animation: myScroll linear infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
     .item {
       height: 28px;
       margin-bottom: 16px;

@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:24:21
+ * @LastEditors: lz
+ * @LastEditTime: 2022-05-23 12:46:37
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -14,7 +14,12 @@
         <div class="top blue">故障设备</div>
         <div class="bottom sc-flex sc-ai-center sc-jc-center blue">
           <!-- {{ list.runStatusCount[0].count }} -->
-          {{ list.error }}
+          <!-- {{ list.error }} -->
+          <a-count-to
+            :startVal="0"
+            :endVal="list.error"
+            :duration="3000"
+          ></a-count-to>
           <span class="sc-fs-xl">个</span>
         </div>
       </div>
@@ -23,7 +28,13 @@
           离线设备
         </div>
         <div class="bottom sc-flex sc-ai-center sc-jc-center orange">
-          {{ list.runStatusCount[1].count }}<span class="sc-fs-xl">个</span>
+          <!-- {{ list.runStatusCount[1].count }} -->
+          <a-count-to
+            :startVal="0"
+            :endVal="list.runStatusCount[1].count"
+            :duration="3000"
+          ></a-count-to>
+          <span class="sc-fs-xl">个</span>
         </div>
       </div>
     </div>
@@ -40,8 +51,8 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   mounted() {
     this.init();
@@ -49,10 +60,10 @@ export default {
   methods: {
     init() {
       const e = echarts.init(this.$refs.content);
-      let data = this.list.stateCount.map((n) => {
+      let data = this.list.stateCount.map(n => {
         return {
           name: n.stateName + n.count + "次",
-          value: n.count,
+          value: n.count
         };
       });
       let option = {
@@ -62,7 +73,7 @@ export default {
           "#19DC7C",
           "#34A6FE",
           "#EF3C4F",
-          "#ee8131",
+          "#ee8131"
         ],
         series: [
           {
@@ -71,8 +82,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false,
-              },
+                show: false
+              }
             },
             data: [
               {
@@ -80,14 +91,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#809DF5",
-                  },
+                    color: "#809DF5"
+                  }
                 },
                 tooltip: {
-                  show: false,
-                },
-              },
-            ],
+                  show: false
+                }
+              }
+            ]
           },
           {
             type: "pie",
@@ -95,8 +106,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false,
-              },
+                show: false
+              }
             },
             name: "",
             data: [
@@ -105,14 +116,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984",
-                  },
+                    color: "#084984"
+                  }
                 },
                 tooltip: {
-                  show: false,
-                },
-              },
-            ],
+                  show: false
+                }
+              }
+            ]
           },
           {
             type: "pie",
@@ -120,8 +131,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false,
-              },
+                show: false
+              }
             },
             name: "",
             data: [
@@ -130,14 +141,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984",
-                  },
+                    color: "#084984"
+                  }
                 },
                 tooltip: {
-                  show: false,
-                },
-              },
-            ],
+                  show: false
+                }
+              }
+            ]
           },
           {
             type: "pie",
@@ -145,8 +156,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false,
-              },
+                show: false
+              }
             },
             name: "",
             data: [
@@ -155,14 +166,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984",
-                  },
+                    color: "#084984"
+                  }
                 },
                 tooltip: {
-                  show: false,
-                },
-              },
-            ],
+                  show: false
+                }
+              }
+            ]
           },
           {
             name: "Nightingale Chart",
@@ -171,7 +182,7 @@ export default {
             center: ["50%", "50%"],
             roseType: "area",
             itemStyle: {
-              borderRadius: 1,
+              borderRadius: 1
             },
             data: data,
             labelLine: {
@@ -179,26 +190,26 @@ export default {
                 length: fontChart(30),
                 length2: fontChart(15),
                 lineStyle: {
-                  color: "#fff",
-                },
-              },
+                  color: "#fff"
+                }
+              }
             },
             label: {
-              color: "#fff",
-            },
-          },
+              color: "#fff"
+            }
+          }
         ],
         axisPointer: [
           {
             lineStyle: {
-              color: "#fff",
-            },
-          },
-        ],
+              color: "#fff"
+            }
+          }
+        ]
       };
       e.setOption(option);
-    },
-  },
+    }
+  }
 };
 </script>
 
