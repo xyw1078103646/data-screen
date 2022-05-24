@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: lz
- * @LastEditTime: 2022-05-23 15:41:55
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-24 17:31:57
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 物联接入
 -->
@@ -88,8 +88,8 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   computed: {
     carousel() {
@@ -98,10 +98,11 @@ export default {
       let i = 0;
       while (listCopy.length > 0) {
         arr[i] = listCopy.splice(0, 6);
+        i++;
       }
       return arr;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 10:40:53
+ * @LastEditTime: 2022-05-24 17:41:59
  * @Description: 
 -->
 <Panel>
@@ -169,47 +169,61 @@
           >
           </el-table-column>
           <!-- 以下为操作 -->
-          <el-table-column v-if="isShow('action1')" label="用电趋势">
+          <el-table-column
+            v-if="isShow('action1')"
+            label="用电趋势"
+            fixed="right"
+          >
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goDetail(scope.row,1)"
+              <span class="sc-cursor action" @click="goDetail(scope.row,1)"
                 >查看详情</span
               >
             </template>
           </el-table-column>
-          <el-table-column v-if="isShow('action2')" label="用电功率">
+          <el-table-column
+            v-if="isShow('action2')"
+            label="用电功率"
+            fixed="right"
+          >
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goDetail(scope.row,2)"
+              <span class="sc-cursor action" @click="goDetail(scope.row,2)"
                 >查看详情</span
               >
             </template>
           </el-table-column>
-          <el-table-column v-if="isShow('action3')" label="用电能耗">
+          <el-table-column
+            v-if="isShow('action3')"
+            label="用电能耗"
+            fixed="right"
+          >
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goDetail(scope.row,3)"
+              <span class="sc-cursor action" @click="goDetail(scope.row,3)"
                 >查看详情</span
               >
             </template>
           </el-table-column>
-          <el-table-column v-if="isShow('action4')" label="操作">
+          <el-table-column v-if="isShow('action4')" label="操作" fixed="right">
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goCamera(scope.row)"
+              <span class="sc-cursor action" @click="goCamera(scope.row)"
                 >查看摄像头</span
               >
             </template>
           </el-table-column>
-          <el-table-column v-if="isShow('action5')" label="操作">
+          <el-table-column v-if="isShow('action5')" label="操作" fixed="right">
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goDetail(scope.row,4)"
+              <span class="sc-cursor action" @click="goDetail(scope.row,4)"
                 >查看详情</span
               >
             </template>
           </el-table-column>
-          <el-table-column v-if="isShow('action6')" label="操作">
+          <el-table-column v-if="isShow('action6')" label="操作" fixed="right">
             <template slot-scope="scope">
-              <span class="sc-cursor sc-mr-1" @click="hotImagery(scope.row,1)"
+              <span
+                class="sc-cursor action sc-mr-1"
+                @click="hotImagery(scope.row,1)"
                 >在线视频预览</span
               >
-              <span class="sc-cursor" @click="hotImagery(scope.row,2)"
+              <span class="sc-cursor action" @click="hotImagery(scope.row,2)"
                 >热成像预览</span
               >
             </template>

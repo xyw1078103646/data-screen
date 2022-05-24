@@ -2,13 +2,18 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:54:35
+ * @LastEditTime: 2022-05-24 11:03:59
  * @Description:
  */
 
 import Panel from "../list/components/panel.vue";
 import TablePanel from "../list/components/tablePanel.vue";
-import { getOperation, getDetail, getMsgCount } from "@/api/operationApi.js";
+import {
+  getOperation,
+  getDetail,
+  getMsgCount,
+  getCount,
+} from "@/api/operationApi.js";
 
 export default {
   name: "list",
@@ -140,12 +145,20 @@ export default {
       ],
       tableData: [],
       total: 0,
+      allTotal: {
+        unFinish: 0,
+        finished: 0,
+      },
     };
   },
   mounted() {
     this.getList();
   },
   methods: {
+    async init() {
+      const res = await getCount({});
+      this.allTotal = res.data;
+    },
     handleChange(pageNum) {
       this.queryParams.pageNum = pageNum;
       this.getList();
@@ -172,6 +185,7 @@ export default {
       this.getList();
     },
     async getList() {
+      this.init();
       this.loading = true;
       const res = await getOperation(this.queryParams);
       this.loading = false;

@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:57:03
+ * @LastEditTime: 2022-05-24 11:02:41
  * @Description: 
 -->
 <Panel>
@@ -23,14 +23,14 @@
         :class="{isActive:queryParams.handle == 1}"
         @click="changeHandle(1)"
       >
-        待处理
+        待处理{{allTotal.unFinish}}
       </div>
       <div
         class="tab"
         :class="{isActive:queryParams.handle == 2}"
         @click="changeHandle(2)"
       >
-        已处理
+        已处理{{allTotal.finished}}
       </div>
     </div>
     <div class="searchBox sc-mt-2">
@@ -277,8 +277,9 @@
       title="报警详情"
       :visible.sync="detailFlag"
       :before-close="closeDialog"
+      size="45%"
     >
-      <template v-if="detailData">
+      <div class="sc-p-2" v-if="detailData">
         <el-descriptions title="设备信息" :column="2">
           <el-descriptions-item label="安装位置"
             >{{detailData.address}}</el-descriptions-item
@@ -312,7 +313,7 @@
             >{{detailData.address}}</el-descriptions-item
           >
         </el-descriptions>
-      </template>
+      </div>
     </el-drawer>
   </div>
 </Panel>

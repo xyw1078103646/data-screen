@@ -2,13 +2,13 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 11:17:44
+ * @LastEditTime: 2022-05-24 17:49:00
  * @Description:
  */
 
 import Panel from "./components/panel.vue";
 import TablePanel from "./components/tablePanel.vue";
-import { getEquipment } from "@/api/listApi.js";
+import { getEquipment, getActive } from "@/api/listApi.js";
 
 export default {
   name: "list",
@@ -106,16 +106,29 @@ export default {
     },
   },
   methods: {
-    init() {
-      const children = this.$refs.tagContent.childNodes;
-      const pWidth = this.$refs.tagContent.clientWidth;
-      let cWidth = 0;
-      children.forEach((n) => {
-        cWidth += n.clientWidth + 14;
+    async init() {
+      const res = await getActive({});
+      let activeList = res.data.kindCount;
+      this.tabList = this.tabList.filter((n) => {
+        let flag = false;
+        activeList.map((item) => {
+          if (item.kind == n.code) {
+            flag = true;
+          }
+        });
+        return flag;
       });
-      cWidth = cWidth - 14;
-      this.diff = cWidth - pWidth;
-      // console.log(777, this.diff)
+      this.$nextTick(() => {
+        const children = this.$refs.tagContent.childNodes;
+        const pWidth = this.$refs.tagContent.clientWidth;
+        let cWidth = 0;
+        children.forEach((n) => {
+          cWidth += n.clientWidth + 14;
+        });
+        cWidth = cWidth - 14;
+        this.diff = cWidth - pWidth;
+        // console.log(777, this.diff)
+      });
     },
     goLeft() {
       this.offset -= 110;
@@ -220,17 +233,21 @@ export default {
       this.$router.push({
         path: `/detail/${type}`,
         query: {
-          id: row.id,
+          id: type == 4 ? "718762899931013120" : row.id,
         },
       });
     },
     //查看摄像头
     goCamera(row) {
-      console.log(row);
+      window.open(row.cameraLiveAddress);
     },
     //火焰识别摄像头 type 1在线视频预览 2热成像预览
     hotImagery(row, type) {
-      console.log(row, type);
+      if (type == 1) {
+        window.open(row.cameraAddress);
+      } else if (type == 2) {
+        window.open(row.thermalImageAddress);
+      }
     },
   },
 };

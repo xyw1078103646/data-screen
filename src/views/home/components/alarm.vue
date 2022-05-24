@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: lz
- * @LastEditTime: 2022-05-23 12:48:02
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-05-24 17:52:21
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -78,8 +78,8 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   computed: {
     diff() {
@@ -94,7 +94,7 @@ export default {
       arr[0] = this.list.highPoint.slice(0, 5);
       arr[1] = this.list.highPoint.slice(5);
       return arr;
-    }
+    },
   },
   mounted() {
     this.init();
@@ -108,40 +108,40 @@ export default {
           data: this.list.times,
           axisLine: {
             lineStyle: {
-              color: "#fff"
-            }
-          }
+              color: "#fff",
+            },
+          },
         },
         yAxis: {
           type: "value",
           axisLine: {
             lineStyle: {
-              color: "#fff"
-            }
+              color: "#fff",
+            },
           },
           splitLine: {
             lineStyle: {
-              color: "#22297C"
-            }
-          }
+              color: "#22297C",
+            },
+          },
         },
         series: [
           {
             data: this.list.counts,
-            type: "line"
-          }
+            type: "line",
+          },
         ],
         color: ["#FD5A78"],
         grid: {
           top: fontChart(10),
           left: fontChart(30),
           right: fontChart(10),
-          bottom: fontChart(30)
-        }
+          bottom: fontChart(30),
+        },
       };
       e.setOption(option);
-    }
-  }
+    },
+  },
 };
 </script>
 
