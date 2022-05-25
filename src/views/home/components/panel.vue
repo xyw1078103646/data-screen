@@ -2,14 +2,14 @@
  * @Author: xyw
  * @Date: 2022-05-11 11:16:35
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-23 15:57:08
+ * @LastEditTime: 2022-05-25 17:36:11
  * @Description: 
 -->
 <template>
   <div class="panel-container" :style="styleObj">
     <div class="title sc-flex sc-jc-between sc-ai-center">
       <span>{{ title }}</span>
-      <svg-icon icon-class="arrow" @click="goPage"></svg-icon>
+      <svg-icon v-if="hasArrow" icon-class="arrow" @click="goPage"></svg-icon>
     </div>
     <slot />
     <div class="bottom"></div>
@@ -31,6 +31,10 @@ export default {
     toUrl: {
       type: String,
       default: "",
+    },
+    hasArrow: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {

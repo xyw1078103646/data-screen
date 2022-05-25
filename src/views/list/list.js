@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-24 17:49:00
+ * @LastEditTime: 2022-05-25 17:53:09
  * @Description:
  */
 
@@ -92,8 +92,8 @@ export default {
   },
   mounted() {
     this.init();
-    this.getList();
     this.active = this.$route.query.kind || 2;
+    this.getList();
   },
   watch: {
     offset(val) {

@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-24 11:02:41
+ * @LastEditTime: 2022-05-25 17:50:36
  * @Description: 
 -->
 <Panel>
@@ -96,7 +96,7 @@
           >
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="通讯地址：" v-if="queryParams.handle == 1">
+        <!-- <el-form-item label="通讯地址：" v-if="queryParams.handle == 1">
           <el-input
             class="w-160"
             v-model="queryParams.networkAddr"
@@ -104,7 +104,7 @@
             @keyup.enter.native="search"
           >
           </el-input>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="处理结果：" v-if="queryParams.handle == 2">
           <el-select
             class="w-160"
@@ -180,7 +180,7 @@
             label="通知次数"
           >
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="getDrawer(scope.row)"
+              <span class="sc-cursor action" @click="getDrawer(scope.row)"
                 >{{scope.row.count}}</span
               >
             </template>
@@ -217,7 +217,9 @@
           </el-table-column>
           <el-table-column label="操作" fixed="right">
             <template slot-scope="scope">
-              <span class="sc-cursor" @click="goDetail(scope.row)">详情</span>
+              <span class="sc-cursor action" @click="goDetail(scope.row)"
+                >详情</span
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -240,7 +242,7 @@
     >
       <div class="tableBox sc-p-2">
         <table-panel>
-          <el-table :data="drawerData" class="w-100">
+          <el-table :data="drawerData" class="w-100" v-loading="countLoading">
             <div
               class="sc-flex sc-ai-center sc-jc-center"
               style="height:2rem"
@@ -302,7 +304,12 @@
             >{{detailData.address}}</el-descriptions-item
           >
         </el-descriptions>
-        <el-descriptions title="处理信息" :column="2" class="sc-mt-3">
+        <el-descriptions
+          title="处理信息"
+          :column="2"
+          class="sc-mt-3"
+          v-if="queryParams.handle == 2"
+        >
           <el-descriptions-item label="处理方式"
             >{{detailData.address}}</el-descriptions-item
           >

@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-24 11:03:59
+ * @LastEditTime: 2022-05-25 17:49:18
  * @Description:
  */
 
@@ -149,6 +149,7 @@ export default {
         unFinish: 0,
         finished: 0,
       },
+      countLoading: false,
     };
   },
   mounted() {
@@ -217,6 +218,7 @@ export default {
     },
     async getDrawer(row) {
       this.drawerFlag = true;
+      this.countLoading = true;
       const res = await getMsgCount({
         state: row.state,
         deviceId: row.deviceId,
@@ -225,6 +227,7 @@ export default {
         pageNum: this.deawerPage,
         pageSize: 10,
       });
+      this.countLoading = false;
       this.drawerData = res.data.list || [];
       this.drawerTotal = res.data.total;
     },

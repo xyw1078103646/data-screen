@@ -1,13 +1,3 @@
-<svg id="组_82" data-name="组 82" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="33" viewBox="0 0 33 33">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #1d3598;
-        stroke: #03a2ff;
-        stroke-width: 1px;
-      }
-    </style>
-  </defs>
-  <rect id="矩形_14_拷贝_5" data-name="矩形 14 拷贝 5" class="cls-1" x="0.5" y="0.5" width="32" height="32" rx="4" ry="4"/>
-  <image id="消防栓-离线" x="6.5" y="7.5" width="20" height="20" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABjUlEQVQ4ja2UvU7cQBSFvzPrREIg6FKAhEAoT0FN2qRDeQRIwUuAxAtQ0NAgWiS6FIg3IEqF0qVJQ0GFBAFl56Cxx95d42X5ySnssTX3mzP3zh2tXP64BKawv9r8AWYAA6J6XLkXfil99eNHmw9Ucn5H4WlCOAb+FZAniCVJ+8ACLQl/w9wiHZTgtsw2MJv+JuBt6RDugJuO6Slgr/P/QH+T07SHMBIG9xMCu3SXYaXCi0KfoTaw9wpGry4gOYdFHr8D5l8BLHINkrlQZFDK4DViHZjLE3eAlfEc74J+5vw1OSwQX4D3cjzD4coSjkbSBhoPVIyHKFyk+bJ7ltYSODk8GVk3uj7WU0/vVIu4f6GqDH3glNGiiGjXw8mq+6iOGUpoTuFzKJPVOGwt9EIZOQ4cuv8mWnYUESL8F1gpldDQXEIeupDeoEJBzQIV19UxFUtPb9Gdx6pod6/cVHsLWB6/Q30vm+ARsGmaRpsEPmN+53uu26DCEdI5dmrRIeBjrWI+jXU2QvWs0AAIPABfnXkw6/DybwAAAABJRU5ErkJggg=="/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <image id="消防栓" width="20" height="20" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABeklEQVQ4jbWUsU4UURSGv//O4IZA1oTGYmMoKIidb0Bl0JfwBSw0vAaNm1ATakorO8QHIGC/hIJCLbYxZtWF+5M7O8vOLjNrsq5/N3Pu+e4/55w52vp29hVYJcbXRtfAOmAA2XlcyfqyztOz5edheLth6YaRBPwUfkoIR8AgB54UoaBtoUNgg3uJEAv22/KCLlkoKBXdyN43tIF2Ag4Kh/AL+E2t3K1/X+hPJW8QKgE3A+cqGYnjA2EBwFxVgak0KwswHpW59w7HkFTPxwsA10toUisvQSj6O/hFCR1aOkB61oiJcU/4ApTqvlV6DLnNK+w14ROgP8lQvxFWdFAfhHujfuiL4u1Vampy97Ehp/WXT+1EQk8JjX8An1lGlz0z5ksZmyr0fwBNmAz6woqEAhyC/x1Wdbr0Xy+fE9tkdlFN+6kdq7zcpQ8kxzfgznjZzigDfxpdNx3OrWz28DvgpfBluStr75N0DDoF3k871IMy7gC79b5rNQECd9VYbiHaT1ngAAAAAElFTkSuQmCC"/>
 </svg>
