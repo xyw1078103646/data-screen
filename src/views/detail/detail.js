@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 17:27:38
+ * @LastEditTime: 2022-05-25 18:23:23
  * @Description:
  */
 
@@ -32,6 +32,8 @@ export default {
       hisTotal: 0,
       hisData: [],
       hisFlag: false,
+      dateArr: [],
+      hisType: 1,
     };
   },
   mounted() {
@@ -104,12 +106,16 @@ export default {
         e.setOption(option);
       });
     },
-    async getHis(type) {
+    showHis(type) {
       //1电流2温度
+      this.hisType = type;
+      this.getHis();
+    },
+    async getHis() {
       const res = await electroHistoryPage({
         ...this.queryParams,
         id: this.$route.query.id,
-        type: type,
+        type: this.hisType,
       });
       this.hisData = res.data.list || [];
       this.hisTotal = res.data.total;
@@ -123,6 +129,11 @@ export default {
     },
     handleChange(pageNum) {
       this.queryParams.pageNum = pageNum;
+      this.getHis();
+    },
+    changeDate(v) {
+      this.queryParams.startTime = v[0];
+      this.queryParams.endTime = v[1];
       this.getHis();
     },
   },

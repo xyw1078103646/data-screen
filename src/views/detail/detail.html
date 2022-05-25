@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 17:31:57
+ * @LastEditTime: 2022-05-25 18:23:32
  * @Description: 
 -->
 <Panel>
@@ -85,7 +85,7 @@
                 <div class="desc sc-fs-lg">参考阀值--</div>
               </div>
             </div>
-            <div class="sc-mt-2 his" @click="getHis(index + 1)">
+            <div class="sc-mt-2 his" @click="showHis(index + 1)">
               <span class="sc-mr-1">查看历史记录</span>
               <i class="el-icon-arrow-right"></i>
             </div>
@@ -104,6 +104,19 @@
       :visible.sync="hisFlag"
       :before-close="closeHis"
     >
+      <div class="sc-pl-2">
+        <el-date-picker
+          style="width:1.35rem"
+          v-model="dateArr"
+          valueFormat="yyyy年MM月DD日"
+          @change="changeDate"
+          type="daterange"
+          range-separator="-"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        >
+        </el-date-picker>
+      </div>
       <div class="tableBox sc-p-2">
         <table-panel>
           <el-table :data="hisData" class="w-100">

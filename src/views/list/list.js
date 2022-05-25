@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 17:53:09
+ * @LastEditTime: 2022-05-25 18:10:05
  * @Description:
  */
 
@@ -80,6 +80,10 @@ export default {
       total: 0,
       diff: 0,
       offset: 0,
+      queryParams: {
+        installationAddr: "",
+        runStatus: undefined,
+      },
     };
   },
   computed: {
@@ -140,13 +144,24 @@ export default {
       this.pageNum = pageNum;
       this.getList();
     },
+    search() {
+      this.pageNum = 1;
+      this.getList();
+    },
     async getList() {
       this.loading = true;
-      const res = await getEquipment({
+      let params = {
         pageNum: this.pageNum,
         pageSize: this.pageSize,
         kind: this.active,
-      });
+      };
+      if ([].includes(this.active)) {
+        params = {
+          ...params,
+          ...this.queryParams,
+        };
+      }
+      const res = await getEquipment(params);
       this.loading = false;
       this.tableData = res.data.list;
       this.total = res.data.total;
@@ -154,8 +169,22 @@ export default {
     //判断该行是否展示
     isShow(prop) {
       let enumObj = {
-        2: ["name", "installationAddr", "networkAddr", "runStatus"], //智能烟感
-        10: ["name", "installationAddr", "networkAddr", "runStatus"], //智能温感
+        2: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "addr",
+          "wifi",
+        ], //智能烟感
+        10: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "addr",
+          "wifi",
+        ], //智能温感
         3: [
           "name",
           "installationAddr",
@@ -164,6 +193,8 @@ export default {
           "action1",
           "action2",
           "action3",
+          "addr",
+          "wifi",
         ], //智慧用电
         5: [
           "fireRoomName",
@@ -172,9 +203,17 @@ export default {
           "networkAddr",
           "runStatus",
           "action4",
+          "wifi",
         ], //监控摄像头
-        99: ["name", "installationAddr", "networkAddr"], //水浸设备
-        14: ["name", "installationAddr", "networkAddr", "runStatus"], //可燃气体探测器
+        99: ["name", "installationAddr", "networkAddr", "addr"], //水浸设备
+        14: [
+          "name",
+          "installationAddr",
+          "networkAddr",
+          "runStatus",
+          "addr",
+          "wifi",
+        ], //可燃气体探测器
         4: [
           "name",
           "installationAddr",
@@ -183,6 +222,8 @@ export default {
           "valueMap",
           "blockShot",
           "valveStatus",
+          "addr",
+          "wifi",
         ], //室外消火栓
         9: [
           "name",
@@ -191,6 +232,8 @@ export default {
           "runStatus",
           "valueMap",
           "valueMap1",
+          "addr",
+          "wifi",
         ], //室内消火栓
         11: [
           "name",
@@ -198,6 +241,8 @@ export default {
           "networkAddr",
           "runStatus",
           "action5",
+          "addr",
+          "wifi",
         ], //智能充电桩
         6: ["name", "fireRoomName", "networkAddr1", "runStatus"], //用户传输装置
         8: [
@@ -208,6 +253,7 @@ export default {
           "thermalImageName",
           "runStatus",
           "action6",
+          "wifi",
         ], //火焰识别摄像头
         1: [
           "fireRoomName",
