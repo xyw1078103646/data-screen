@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 18:23:32
+ * @LastEditTime: 2022-05-26 10:24:52
  * @Description: 
 -->
 <Panel>
@@ -108,12 +108,13 @@
         <el-date-picker
           style="width:1.35rem"
           v-model="dateArr"
-          valueFormat="yyyy年MM月DD日"
+          value-format="yyyy-MM-dd"
           @change="changeDate"
           type="daterange"
           range-separator="-"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
+          :picker-options="pickerOptions"
         >
         </el-date-picker>
       </div>

@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-24 10:54:33
+ * @LastEditTime: 2022-05-26 11:05:07
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -26,9 +26,24 @@
           <div class="sc-text-white sc-mr-2">{{ item.showTime }}</div>
           <div class="sc-text-white">{{ item.typeName }}</div>
           <template v-if="item.handle == 1">
-            <div class="tag sc-flex sc-ai-center type1">误报</div>
-            <div class="tag sc-flex sc-ai-center type2">未处理</div>
-            <div class="tag sc-flex sc-ai-center type3">需救援</div>
+            <div
+              class="tag sc-flex sc-ai-center type1 sc-cursor"
+              @click.stop="setRecord(item, '误报')"
+            >
+              误报
+            </div>
+            <div
+              class="tag sc-flex sc-ai-center type2 sc-cursor"
+              @click.stop="setRecord(item, '已处理')"
+            >
+              未处理
+            </div>
+            <div
+              class="tag sc-flex sc-ai-center type3 sc-cursor"
+              @click.stop="setRecord(item, '需救援')"
+            >
+              需救援
+            </div>
           </template>
           <template v-else>
             <div class="sc-text-white sc-ml-2">已处理</div>
@@ -89,6 +104,7 @@
 
 <script>
 import { getDetail } from "@/api/operationApi.js";
+import { dispose } from "@/api/homeApi.js";
 export default {
   props: {
     list: {
@@ -126,6 +142,17 @@ export default {
     closeDialog() {
       this.detailData = null;
       this.detailFlag = false;
+    },
+    //处理报警
+    async setRecord(item, context) {
+      await dispose({
+        state: item.state,
+        timestamp: item.timestamp,
+        deviceId: item.deviceId,
+        ownerId: item.ownerId,
+        context: context,
+      });
+      item.handle = 2;
     },
   },
 };

@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 18:23:23
+ * @LastEditTime: 2022-05-26 10:48:52
  * @Description:
  */
 
@@ -34,6 +34,9 @@ export default {
       hisFlag: false,
       dateArr: [],
       hisType: 1,
+      pickerOptions: {
+        disabledDate: this.disabledDate,
+      },
     };
   },
   mounted() {
@@ -125,16 +128,28 @@ export default {
       this.hisFlag = false;
       this.hisData = [];
       this.hisTotal = 0;
-      this.queryParams.pageNum = 1;
+      this.queryParams = {
+        startTime: undefined,
+        endTime: undefined,
+        pageNum: 1,
+        pageSize: 10,
+      };
     },
     handleChange(pageNum) {
       this.queryParams.pageNum = pageNum;
       this.getHis();
     },
     changeDate(v) {
-      this.queryParams.startTime = v[0];
-      this.queryParams.endTime = v[1];
+      this.queryParams.startTime = v[0] + " 00:00:00";
+      this.queryParams.endTime = v[1] + " 23:00:00";
       this.getHis();
+    },
+    disabledDate(val) {
+      console.log(888, Date.now(), val, val.getTime());
+      return (
+        Date.now() - 3600 * 1000 * 24 > val.getTime() ||
+        val.getTime() > Date.now() + 3600 * 1000 * 24 * 30
+      );
     },
   },
 };
