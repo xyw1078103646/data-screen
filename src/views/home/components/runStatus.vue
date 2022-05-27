@@ -1,5 +1,5 @@
 <!--
- * @Author: xiaoyiwen yyxiao@gongsibao.com
+ * @Author: xiaoyiwen  
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: lz
  * @LastEditTime: 2022-05-23 12:46:37
@@ -51,8 +51,8 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   mounted() {
     this.init();
@@ -60,10 +60,10 @@ export default {
   methods: {
     init() {
       const e = echarts.init(this.$refs.content);
-      let data = this.list.stateCount.map(n => {
+      let data = this.list.stateCount.map((n) => {
         return {
           name: n.stateName + n.count + "次",
-          value: n.count
+          value: n.count,
         };
       });
       let option = {
@@ -73,7 +73,7 @@ export default {
           "#19DC7C",
           "#34A6FE",
           "#EF3C4F",
-          "#ee8131"
+          "#ee8131",
         ],
         series: [
           {
@@ -82,8 +82,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false
-              }
+                show: false,
+              },
             },
             data: [
               {
@@ -91,14 +91,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#809DF5"
-                  }
+                    color: "#809DF5",
+                  },
                 },
                 tooltip: {
-                  show: false
-                }
-              }
-            ]
+                  show: false,
+                },
+              },
+            ],
           },
           {
             type: "pie",
@@ -106,8 +106,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false
-              }
+                show: false,
+              },
             },
             name: "",
             data: [
@@ -116,14 +116,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984"
-                  }
+                    color: "#084984",
+                  },
                 },
                 tooltip: {
-                  show: false
-                }
-              }
-            ]
+                  show: false,
+                },
+              },
+            ],
           },
           {
             type: "pie",
@@ -131,8 +131,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false
-              }
+                show: false,
+              },
             },
             name: "",
             data: [
@@ -141,14 +141,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984"
-                  }
+                    color: "#084984",
+                  },
                 },
                 tooltip: {
-                  show: false
-                }
-              }
-            ]
+                  show: false,
+                },
+              },
+            ],
           },
           {
             type: "pie",
@@ -156,8 +156,8 @@ export default {
             hoverAnimation: false,
             labelLine: {
               normal: {
-                show: false
-              }
+                show: false,
+              },
             },
             name: "",
             data: [
@@ -166,14 +166,14 @@ export default {
                 value: 0,
                 itemStyle: {
                   normal: {
-                    color: "#084984"
-                  }
+                    color: "#084984",
+                  },
                 },
                 tooltip: {
-                  show: false
-                }
-              }
-            ]
+                  show: false,
+                },
+              },
+            ],
           },
           {
             name: "Nightingale Chart",
@@ -182,7 +182,7 @@ export default {
             center: ["50%", "50%"],
             roseType: "area",
             itemStyle: {
-              borderRadius: 1
+              borderRadius: 1,
             },
             data: data,
             labelLine: {
@@ -190,26 +190,26 @@ export default {
                 length: fontChart(30),
                 length2: fontChart(15),
                 lineStyle: {
-                  color: "#fff"
-                }
-              }
+                  color: "#fff",
+                },
+              },
             },
             label: {
-              color: "#fff"
-            }
-          }
+              color: "#fff",
+            },
+          },
         ],
         axisPointer: [
           {
             lineStyle: {
-              color: "#fff"
-            }
-          }
-        ]
+              color: "#fff",
+            },
+          },
+        ],
       };
       e.setOption(option);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <!--
- * @Author: xiaoyiwen yyxiao@gongsibao.com
+ * @Author: xiaoyiwen  
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: lz
  * @LastEditTime: 2022-05-23 12:45:33
@@ -42,9 +42,9 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: xyw
  * @Date: 2022-05-11 11:16:35
- * @LastEditors: xiaoyiwen yyxiao@gongsibao.com
+ * @LastEditors: xiaoyiwen  
  * @LastEditTime: 2022-05-18 22:48:44
  * @Description: 
 -->
@@ -19,7 +19,7 @@ export default {
     height: {
       type: Number,
       default: 0,
-    }
+    },
   },
   computed: {
     styleObj() {
@@ -31,7 +31,7 @@ export default {
       }
       return {};
     },
-  }
+  },
 };
 </script>
 
@@ -40,7 +40,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -50,7 +50,7 @@ export default {
     height: 23px;
     border-top: 3px solid rgba(54, 128, 228, 1);
     border-left: 3px solid rgba(54, 128, 228, 1);
-    z-index:99;
+    z-index: 99;
   }
   &::after {
     content: "";
@@ -61,7 +61,7 @@ export default {
     height: 23px;
     border-top: 3px solid rgba(54, 128, 228, 1);
     border-right: 3px solid rgba(54, 128, 228, 1);
-    z-index:99;
+    z-index: 99;
   }
   .bottom {
     position: absolute;
@@ -77,7 +77,7 @@ export default {
       height: 23px;
       border-left: 3px solid rgba(54, 128, 228, 1);
       border-bottom: 3px solid rgba(54, 128, 228, 1);
-      z-index:99;
+      z-index: 99;
     }
     &::after {
       content: "";
@@ -88,7 +88,7 @@ export default {
       height: 23px;
       border-right: 3px solid rgba(54, 128, 228, 1);
       border-bottom: 3px solid rgba(54, 128, 228, 1);
-      z-index:99;
+      z-index: 99;
     }
   }
 }
