@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-16 10:58:50
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-26 10:24:52
+ * @LastEditTime: 2022-05-27 16:14:00
  * @Description: 
 -->
 <Panel>
@@ -19,10 +19,7 @@
         <div class="tab" :class="{isActive:type == 3}" @click="changeType(3)">
           用电能耗
         </div>
-        <div
-          class="sc-text-white sc-flex sc-ai-center sc-cursor"
-          @click="$router.push('/list')"
-        >
+        <div class="sc-text-white sc-flex sc-ai-center sc-cursor" @click="back">
           <span>关闭</span>
           <i class="el-icon-close"></i>
         </div>
@@ -115,6 +112,7 @@
           start-placeholder="开始日期"
           end-placeholder="结束日期"
           :picker-options="pickerOptions"
+          :clearable="false"
         >
         </el-date-picker>
       </div>

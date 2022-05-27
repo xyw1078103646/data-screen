@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-26 10:48:52
+ * @LastEditTime: 2022-05-27 16:10:20
  * @Description:
  */
 
@@ -41,6 +41,9 @@ export default {
   },
   mounted() {
     this.type = this.$route.params.type;
+    if (this.$route.params.type == 4) {
+      this.type = 1;
+    }
     this.getList();
   },
   methods: {
@@ -150,6 +153,14 @@ export default {
         Date.now() - 3600 * 1000 * 24 > val.getTime() ||
         val.getTime() > Date.now() + 3600 * 1000 * 24 * 30
       );
+    },
+    back() {
+      this.$router.push({
+        path: "/list",
+        query: {
+          kind: this.$route.params.type == 4 ? 11 : 3,
+        },
+      });
     },
   },
 };

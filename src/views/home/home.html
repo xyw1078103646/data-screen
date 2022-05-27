@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:47
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 17:43:14
+ * @LastEditTime: 2022-05-27 15:49:51
  * @Description: 
 -->
 <div class="bg">
@@ -40,7 +40,7 @@
           </div>
           <!-- 实时报警 -->
           <div class="records sc-mr-2">
-            <Panel title="实时报警">
+            <Panel title="实时报警" :hasArrow="false">
               <Records v-if="records" :list="records"></Records>
             </Panel>
           </div>

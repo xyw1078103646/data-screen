@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 18:10:05
+ * @LastEditTime: 2022-05-27 16:08:29
  * @Description:
  */
 
@@ -148,6 +148,13 @@ export default {
       this.pageNum = 1;
       this.getList();
     },
+    reset() {
+      this.queryParams = {
+        installationAddr: "",
+        runStatus: undefined,
+      };
+      this.search();
+    },
     async getList() {
       this.loading = true;
       let params = {
@@ -155,7 +162,7 @@ export default {
         pageSize: this.pageSize,
         kind: this.active,
       };
-      if ([].includes(this.active)) {
+      if ([2, 10, 3, 5, 99, 14, 4, 9, 11, 8].includes(this.active)) {
         params = {
           ...params,
           ...this.queryParams,
@@ -272,7 +279,7 @@ export default {
     },
     changeActive(code) {
       this.active = code;
-      this.getList();
+      this.reset();
     },
     // 智慧用电/空开 查看详情  type 1用电趋势 2用电功率 3用电能耗 4智能充电桩
     async goDetail(row, type) {
