@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-25 17:49:18
+ * @LastEditTime: 2022-05-27 10:01:24
  * @Description:
  */
 
@@ -30,6 +30,7 @@ export default {
       drawerData: [],
       drawerPage: 1,
       drawerTotal: 0,
+      selDrawerRow: null,
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -216,14 +217,18 @@ export default {
       this.detailData = null;
       this.detailFlag = false;
     },
-    async getDrawer(row) {
+    getDrawer(row) {
+      this.selDrawerRow = row;
+      this.requestDrawer();
       this.drawerFlag = true;
+    },
+    async requestDrawer() {
       this.countLoading = true;
       const res = await getMsgCount({
-        state: row.state,
-        deviceId: row.deviceId,
-        startTime: row.createTime,
-        endTime: row.updateTime,
+        state: this.selDrawerRow.state,
+        deviceId: this.selDrawerRow.deviceId,
+        startTime: this.selDrawerRow.createTime,
+        endTime: this.selDrawerRow.updateTime,
         pageNum: this.deawerPage,
         pageSize: 10,
       });
@@ -233,10 +238,12 @@ export default {
     },
     closeDrawer() {
       this.drawerFlag = false;
+      this.selDrawerRow = null;
+      this.deawerPage = 1;
     },
     handleChangeDrawer(pageNum) {
       this.deawerPage = pageNum;
-      this.getDrawer();
+      this.requestDrawer();
     },
   },
 };

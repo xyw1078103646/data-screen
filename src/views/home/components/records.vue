@@ -2,7 +2,7 @@
  * @Author: xiaoyiwen yyxiao@gongsibao.com
  * @Date: 2022-05-13 21:42:19
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-26 11:05:07
+ * @LastEditTime: 2022-05-27 10:32:56
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -46,7 +46,7 @@
             </div>
           </template>
           <template v-else>
-            <div class="sc-text-white sc-ml-2">已处理</div>
+            <div class="sc-text-white sc-ml-2">{{ item.context }}</div>
           </template>
         </div>
       </div>
@@ -69,16 +69,16 @@
         </el-descriptions>
         <el-descriptions title="报警信息" :column="2" class="sc-mt-3">
           <el-descriptions-item label="设备状态">{{
-            detailData.status
+            detailData.typeName
           }}</el-descriptions-item>
           <el-descriptions-item label="报警明细">{{
-            detailData.address
+            detailData.stateName
           }}</el-descriptions-item>
           <el-descriptions-item label="报警时间">{{
-            detailData.address
+            detailData.createTime
           }}</el-descriptions-item>
           <el-descriptions-item label="通知次数">{{
-            detailData.address
+            detailData.count || 0
           }}</el-descriptions-item>
         </el-descriptions>
         <el-descriptions
@@ -88,14 +88,22 @@
           v-if="detailData.handle == 2"
         >
           <el-descriptions-item label="处理方式">{{
-            detailData.address
+            detailData.modeName
           }}</el-descriptions-item>
           <el-descriptions-item label="处理时间">{{
-            detailData.address
+            detailData.updateTime
           }}</el-descriptions-item>
-          <el-descriptions-item label="处理照片">{{
-            detailData.address
-          }}</el-descriptions-item>
+          <el-descriptions-item label="处理照片">
+            <div class="sc-p-1">
+              <el-image
+                v-for="item in detailData.images"
+                :key="item"
+                style="width: 0.5208rem; height: 0.5208rem"
+                :src="item"
+                :fit="fit"
+              ></el-image>
+            </div>
+          </el-descriptions-item>
         </el-descriptions>
       </template>
     </el-dialog>
