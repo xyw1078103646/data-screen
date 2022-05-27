@@ -2,7 +2,7 @@
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
  * @LastEditors: xyw
- * @LastEditTime: 2022-05-27 16:10:20
+ * @LastEditTime: 2022-05-27 16:33:35
  * @Description:
  */
 
@@ -148,10 +148,9 @@ export default {
       this.getHis();
     },
     disabledDate(val) {
-      console.log(888, Date.now(), val, val.getTime());
       return (
-        Date.now() - 3600 * 1000 * 24 > val.getTime() ||
-        val.getTime() > Date.now() + 3600 * 1000 * 24 * 30
+        Date.now() < val.getTime() ||
+        val.getTime() < Date.now() - 3600 * 1000 * 24 * 30
       );
     },
     back() {
