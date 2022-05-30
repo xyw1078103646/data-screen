@@ -16,45 +16,45 @@ import Records from "./components/records.vue";
 import RunStatus from "./components/runStatus.vue";
 
 export default {
-  name: "home",
-  components: {
-    Panel,
-    Access,
-    Alarm,
-    Info,
-    Manager,
-    Position,
-    Records,
-    RunStatus,
-  },
-  data() {
-    return {
-      access: null, //物联接入
-      alarm: null, //运营统计
-      manager: null, //人员管理
-      position: null, //重点部位（巡逻点）巡查管理
-      runStatus: null, //本月运维状态
-      records: null,
-      loading: false,
-    };
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    async init() {
-      this.loading = true;
-      const res = await getDsData({});
-      this.access = res.data.access;
-      this.alarm = res.data.alarm;
-      this.manager = res.data.manager;
-      this.position = res.data.position;
-      this.runStatus = res.data.runStatus;
-      this.records = res.data.alarm.records.map((n) => {
-        n.showTime = n.createTime.split(" ")[1];
-        return n;
-      });
-      this.loading = false;
+    name: "home",
+    components: {
+        Panel,
+        Access,
+        Alarm,
+        Info,
+        Manager,
+        Position,
+        Records,
+        RunStatus,
     },
-  },
+    data() {
+        return {
+            access: null, //物联接入
+            alarm: null, //运营统计
+            manager: null, //人员管理
+            position: null, //重点部位（巡逻点）巡查管理
+            runStatus: null, //本月运维状态
+            records: null,
+            loading: false,
+        };
+    },
+    mounted() {
+        this.init();
+    },
+    methods: {
+        async init() {
+            this.loading = true;
+            const res = await getDsData({});
+            this.access = res.data.access;
+            this.alarm = res.data.alarm;
+            this.manager = res.data.manager;
+            this.position = res.data.position;
+            this.runStatus = res.data.runStatus;
+            this.records = res.data.alarm.records.map((n) => {
+                n.showTime = n.createTime.split(" ")[1];
+                return n;
+            });
+            this.loading = false;
+        },
+    },
 };
