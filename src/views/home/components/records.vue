@@ -1,8 +1,8 @@
 <!--
  * @Author: xiaoyiwen  
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-27 15:50:21
+ * @LastEditors: xyw1078103646 1078103646@qq.com
+ * @LastEditTime: 2022-05-31 09:10:57
  * @FilePath: \data-screen\src\views\home\components\info.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,9 +11,12 @@
     <el-scrollbar class="h-100">
       <div
         class="itemBox"
+        ref="itemBox"
         :style="{
           animationDuration: getDuration,
         }"
+        @mouseover="stop"
+        @mouseout="animation"
       >
         <div
           class="item sc-flex sc-ai-center sc-cursor"
@@ -126,6 +129,7 @@ export default {
     return {
       detailFlag: false,
       detailData: null,
+      timer:null
     };
   },
   computed: {
@@ -133,7 +137,32 @@ export default {
       return this.list.length * 2 + "s";
     },
   },
+  mounted(){
+    this.animation()
+  },
+  beforeDestroy(){
+    this.stop()
+  },
   methods: {
+    stop(){
+      clearInterval(this.timer)
+      this.timer = null
+    },
+    //模拟动画
+    animation(){
+      if(!this.timer){
+        let h = this.$refs.itemBox.clientHeight
+        let pHeight = this.$refs.itemBox.parentNode.clientHeight
+        //  console.log(777,h,pHeight,this.$refs.itemBox.parentNode.parentNode.scrollTop)
+        this.timer = setInterval(() => {   
+          if((this.$refs.itemBox.parentNode.parentNode.scrollTop + pHeight) == h) {
+            this.$refs.itemBox.parentNode.parentNode.scrollTop = 0
+          }else{
+            this.$refs.itemBox.parentNode.parentNode.scrollTop++
+          }         
+        },50)
+      }
+    },
     //打开详情弹框
     async goDetail(row) {
       const res = await getDetail({
@@ -168,20 +197,21 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@keyframes myScroll {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
+// @keyframes myScroll {
+//   0% {
+//     transform: translateY(0%);
+//   }
+//   100% {
+//     transform: translateY(-100%);
+//   }
+// }
 .box {
   padding: 22px 15px;
   height: 350px;
   overflow: hidden;
   /deep/.el-scrollbar__wrap {
     overflow-x: hidden;
+    // transition:all 3s;
   }
   .itemBox {
     animation: myScroll linear infinite;
