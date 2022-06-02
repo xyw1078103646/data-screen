@@ -1,8 +1,8 @@
 /*
  * @Author: xyw
  * @Date: 2022-05-10 23:18:55
- * @LastEditors: lz
- * @LastEditTime: 2022-05-15 12:04:44
+ * @LastEditors: xyw1078103646 1078103646@qq.com
+ * @LastEditTime: 2022-06-02 17:56:58
  * @Description:
  */
 const path = require("path");
@@ -15,12 +15,12 @@ module.exports = {
     lintOnSave: false,
     devServer: {
         before: require('./mock/index.js'),
-        proxy: {
-            "/v1": {
-                target: "https://project.develop.lanchengiot.cn/project_device",
-                changeOrigin: true
-            }
-        }
+        // proxy: {
+        //     "/v1": {
+        //         target: "http://localhost:8080/mock",
+        //         changeOrigin: true
+        //     }
+        // }
     },
     configureWebpack: {
         resolve: {

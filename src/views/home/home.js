@@ -1,8 +1,8 @@
 /*
  * @Author: xyw
  * @Date: 2022-05-13 15:42:57
- * @LastEditors: xyw
- * @LastEditTime: 2022-05-24 17:21:48
+ * @LastEditors: xyw1078103646 1078103646@qq.com
+ * @LastEditTime: 2022-06-02 17:55:08
  * @Description:
  */
 import { getDsData } from "@/api/homeApi";
@@ -14,6 +14,7 @@ import Manager from "./components/manager.vue";
 import Position from "./components/position.vue";
 import Records from "./components/records.vue";
 import RunStatus from "./components/runStatus.vue";
+import axios from 'axios'
 
 export default {
     name: "home",
@@ -55,6 +56,19 @@ export default {
                 return n;
             });
             this.loading = false;
+            // axios.post('/v1/device/analyse').then(res => {
+            //     this.access = res.data.access;
+            //     this.alarm = res.data.alarm;
+            //     this.manager = res.data.manager;
+            //     this.position = res.data.position;
+            //     this.runStatus = res.data.runStatus;
+            //     this.records = res.data.alarm.records.map((n) => {
+            //         n.showTime = n.createTime.split(" ")[1];
+            //         return n;
+            //     });
+            //     this.loading = false;
+            // })
+            
         },
     },
 };
