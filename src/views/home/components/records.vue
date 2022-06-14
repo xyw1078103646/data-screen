@@ -1,9 +1,9 @@
 <!--
  * @Author: xiaoyiwen  
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: xyw1078103646 1078103646@qq.com
- * @LastEditTime: 2022-05-31 09:10:57
- * @FilePath: \data-screen\src\views\home\components\info.vue
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-06-14 16:32:27
+ * @FilePath: \data-screen\src\views\home\components\records.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
@@ -39,7 +39,7 @@
               class="tag sc-flex sc-ai-center type2 sc-cursor"
               @click.stop="setRecord(item, '已处理')"
             >
-              未处理
+              已处理
             </div>
             <div
               class="tag sc-flex sc-ai-center type3 sc-cursor"
@@ -129,7 +129,7 @@ export default {
     return {
       detailFlag: false,
       detailData: null,
-      timer:null
+      timer: null,
     };
   },
   computed: {
@@ -137,30 +137,33 @@ export default {
       return this.list.length * 2 + "s";
     },
   },
-  mounted(){
-    this.animation()
+  mounted() {
+    this.animation();
   },
-  beforeDestroy(){
-    this.stop()
+  beforeDestroy() {
+    this.stop();
   },
   methods: {
-    stop(){
-      clearInterval(this.timer)
-      this.timer = null
+    stop() {
+      clearInterval(this.timer);
+      this.timer = null;
     },
     //模拟动画
-    animation(){
-      if(!this.timer){
-        let h = this.$refs.itemBox.clientHeight
-        let pHeight = this.$refs.itemBox.parentNode.clientHeight
+    animation() {
+      if (!this.timer) {
+        let h = this.$refs.itemBox.clientHeight;
+        let pHeight = this.$refs.itemBox.parentNode.clientHeight;
         //  console.log(777,h,pHeight,this.$refs.itemBox.parentNode.parentNode.scrollTop)
-        this.timer = setInterval(() => {   
-          if((this.$refs.itemBox.parentNode.parentNode.scrollTop + pHeight) == h) {
-            this.$refs.itemBox.parentNode.parentNode.scrollTop = 0
-          }else{
-            this.$refs.itemBox.parentNode.parentNode.scrollTop++
-          }         
-        },50)
+        this.timer = setInterval(() => {
+          if (
+            this.$refs.itemBox.parentNode.parentNode.scrollTop + pHeight ==
+            h
+          ) {
+            this.$refs.itemBox.parentNode.parentNode.scrollTop = 0;
+          } else {
+            this.$refs.itemBox.parentNode.parentNode.scrollTop++;
+          }
+        }, 50);
       }
     },
     //打开详情弹框

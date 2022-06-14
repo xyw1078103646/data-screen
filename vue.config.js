@@ -1,8 +1,8 @@
 /*
  * @Author: xyw
  * @Date: 2022-05-10 23:18:55
- * @LastEditors: lz
- * @LastEditTime: 2022-05-15 12:04:44
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-06-14 16:43:12
  * @Description:
  */
 const path = require("path");
@@ -16,17 +16,18 @@ module.exports = {
   devServer: {
     proxy: {
       "/v1": {
-        target: "https://project.develop.lanchengiot.cn/project_device",
-        changeOrigin: true
-      }
-    }
+        // target: "https://project.develop.lanchengiot.cn/project_device",
+        target: "https://sample2.lanchengiot.cn",
+        changeOrigin: true,
+      },
+    },
   },
   configureWebpack: {
     resolve: {
       alias: {
-        "@": resolve("src")
-      }
-    }
+        "@": resolve("src"),
+      },
+    },
   },
   chainWebpack(config) {
     // set svg-sprite-loader
@@ -42,7 +43,7 @@ module.exports = {
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({
-        symbolId: "icon-[name]"
+        symbolId: "icon-[name]",
       })
       .end();
   },
@@ -52,10 +53,10 @@ module.exports = {
         plugins: [
           require("postcss-px2rem")({
             remUnit: 192,
-            remPrecision: 2
-          })
-        ]
-      }
-    }
-  }
+            remPrecision: 2,
+          }),
+        ],
+      },
+    },
+  },
 };

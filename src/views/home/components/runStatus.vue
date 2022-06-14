@@ -1,9 +1,9 @@
 <!--
  * @Author: xiaoyiwen  
  * @Date: 2022-05-13 21:42:19
- * @LastEditors: lz
- * @LastEditTime: 2022-05-23 12:46:37
- * @FilePath: \data-screen\src\views\home\components\info.vue
+ * @LastEditors: xyw
+ * @LastEditTime: 2022-06-14 16:33:19
+ * @FilePath: \data-screen\src\views\home\components\runStatus.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
@@ -23,8 +23,8 @@
           <span class="sc-fs-xl">个</span>
         </div>
       </div>
-      <div class="tag sc-cursor">
-        <div class="top orange" @click="$router.push('/device/2')">
+      <div class="tag sc-cursor" @click="$router.push('/device/2')">
+        <div class="top orange">
           离线设备
         </div>
         <div class="bottom sc-flex sc-ai-center sc-jc-center orange">
